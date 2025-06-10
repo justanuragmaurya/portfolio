@@ -1,3 +1,4 @@
+import Education from "@/components/Education";
 import Experience from "@/components/Experience";
 import HeroSection from "@/components/Hero";
 import MaxWidthContainer from "@/components/maxwidthcontainer";
@@ -9,6 +10,7 @@ export default function Home() {
       <HeroSection/>
       <ProofOfWork/>
       <Experience/>
+      <Education/>
     </MaxWidthContainer>
   );
 }
