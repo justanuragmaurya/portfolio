@@ -49,7 +49,7 @@ export default function HeroSection() {
           </Link>
           <Link
             href={
-              "https://thumbnaily-storage.s3.ap-south-1.amazonaws.com/thumbnails/assests/resumeanuragmaurya.pdf"
+              "https://thumbnaily-storage.s3.ap-south-1.amazonaws.com/thumbnails/assests/auragmauryaresumee.pdf"
             }
             target="_blank"
           >

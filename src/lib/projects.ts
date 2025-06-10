@@ -1,7 +1,7 @@
 export const Projects:Projects[] = [
     {
         title:"Thumbnaily",
-        description:"A Ai thumbnail generator , takes a refernce image from users and prompt and then crafts perfect thumbnail for the required title",
+        description:"An AI thumbnail generator, takes a reference image from users and prompt and then crafts perfect thumbnail for the required title",
         image:"/thumbnaily.avif",
         techUsed:["NextJS" , "Typescript","AWS S3" , "Postgresql" , "Prisma" , "Virtual Machine" , "CI/CD"],
         liveLink:"https://thumbnaily.in",
@@ -9,15 +9,15 @@ export const Projects:Projects[] = [
     },
     {
         title:"Yaatra AI",
-        description:"a full-stack AI-powered travel planning application using React and Vite for the frontend with express as the backend",
+        description:"A full-stack AI-powered travel planning application using React and Vite for the frontend with Express as the backend",
         image:"/aiyatra.png",
-        techUsed:["React-Vite" , "Typescript"],
+        techUsed:["React-Vite" , "Typescript", "GenAi" , "OpenAI SDK","TailwindCSS"],
         liveLink:"https://aiyatra.anuragmaurya.com",
         githubLink:"https://github.com/justanuragmaurya/ai-trip-planner"
     },
     {
         title:"DeCerts",
-        description:"A decentalised certificate genrator build on top of solana blockchain network , It mints a NFT for each certificate to introduce authenticity.",
+        description:"A decentralized certificate generator built on top of solana blockchain network, It mints an NFT for each certificate to introduce authenticity.",
         image:"/decert.png",
         techUsed:["React-Vite" , "Solana" , "Blockchain" ,"Metaplex NFT" , "RPC Nodes"],
         liveLink:"https://decerts.anuragmaurya.com",
@@ -25,7 +25,7 @@ export const Projects:Projects[] = [
     },
     {
         title:"Sol Devta",
-        description:"A solana token dispenser for solana testnet blockchain network. Users link thier wallet and request for airdrops , the tool provides them with tokens in devnet for them touse while testing.",
+        description:"A solana token dispenser for solana testnet blockchain network. Users link their wallet and request for airdrops, the tool provides them with tokens in devnet for them to use while testing.",
         image:"/soldevta.png",
         techUsed:["React-Vite" , "Express" , "Solana" ,"AlchemyRPC" , "Blockchain"],
         liveLink:"https://soldevta.anuragmaurya.com",
