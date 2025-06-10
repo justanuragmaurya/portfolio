@@ -25,20 +25,20 @@ export default function HeroSection() {
           }
           height={120}
           width={120}
-          alt="anurag's image"
+          alt="anurag&apos;s image"
           className="rounded-full border shadow-xl"
         />
       </div>
       <div className="text-center md:text-left px-4 md:px-0 max-w-2xl">
         <h1 className={`text-2xl md:text-3xl font-medium`}>Hey there,</h1>
         <h1 className={`text-4xl md:text-5xl font-semibold`}>
-          I'm{" "}
+          I&apos;m{" "}
           <span className={`${font.className} font-black`}>
             <AuroraText colors={["red", "orange"]}>Anurag</AuroraText>
           </span>
         </h1>
         <p className="text-primary/70 py-3 text-md">
-          I'm a MVP builder and full-stack developer, turning ideas into
+          I&apos;m a MVP builder and full-stack developer, turning ideas into
           production-ready products—handling everything from concept to
           deployment with a complete modern tech stack.
         </p>
@@ -100,7 +100,7 @@ export default function HeroSection() {
           }
           height={200}
           width={200}
-          alt="anurag's image"
+          alt="anurag&apos;s image"
           className="rounded-full border shadow-xl"
         />
       </div>
