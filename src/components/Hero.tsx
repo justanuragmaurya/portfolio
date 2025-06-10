@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Bricolage_Grotesque } from "next/font/google";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 import { AuroraText } from "@/components/magicui/aurora-text";
+import { ModeToggle } from "./mode-toggle";
+import MaxWidthContainer from "./maxwidthcontainer";
 
 const font = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -12,7 +14,10 @@ const font = Bricolage_Grotesque({
 
 export default function HeroSection() {
   return (
-    <div className="pt-12 md:pt-32 flex flex-col md:flex-row gap-6 md:gap-8 md:justify-between md:items-center">
+    <div className="pt-12 flex flex-col md:flex-row gap-6 md:gap-8 md:justify-between md:items-center relative">
+        <div className="fixed top-0 left-0 m-5">
+            <ModeToggle/>
+        </div>
       <div className="flex justify-center md:hidden">
         <Image
           src={

@@ -9,7 +9,7 @@ const font = Bricolage_Grotesque({
 
 export default function Experience(){
     return(
-        <div className="flex flex-col items-center p-5 mt-5 w-full">
+        <div className="flex flex-col items-center p-5 mt-10 w-full">
             <h1 className={`${font.className} font-semibold text-3xl`}>Experience</h1>
             <div className="flex w-full items-center gap-5 mt-5">
                 <div>
