@@ -5,7 +5,6 @@ import { Bricolage_Grotesque } from "next/font/google";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { ModeToggle } from "./mode-toggle";
-import MaxWidthContainer from "./maxwidthcontainer";
 
 const font = Bricolage_Grotesque({
   subsets: ["latin"],
