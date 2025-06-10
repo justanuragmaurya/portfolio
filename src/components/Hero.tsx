@@ -12,7 +12,7 @@ const font = Bricolage_Grotesque({
 
 export default function HeroSection(){
     return(
-        <div className="mt-16 md:mt-32 flex flex-col md:flex-row gap-6 md:gap-8 md:justify-between md:items-center">
+        <div className="pt-12 md:pt-32 flex flex-col md:flex-row gap-6 md:gap-8 md:justify-between md:items-center">
             <div className="flex justify-center md:hidden">
                 <Image 
                     src={"https://pbs.twimg.com/profile_images/1928635890999394304/09YwaCu8_400x400.jpg"} 

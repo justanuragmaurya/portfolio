@@ -13,7 +13,7 @@ export default function Education(){
             <h1 className={`${font.className} font-semibold text-3xl`}>Education</h1>
             <div className="flex w-full items-center gap-5 mt-5">
                 <div>
-                    <Image src={"/lpulogo.jpg"} width={50} height={50} alt="HairiyapaLogo"/>
+                    <Image src={"/lpulogo.jpg"} width={50} height={50} alt="LPU LOGO" className="rounded-full"/>
                 </div>
                 <div className="w-full">
                     <div className="flex justify-between items-center">
@@ -25,7 +25,7 @@ export default function Education(){
             </div>
             <div className="flex w-full items-center gap-5 mt-5">
                 <div>
-                    <Image src={"/apslogo.png"} width={50} height={50} alt="HairiyapaLogo" className=""/>
+                    <Image src={"/apslogo.png"} width={50} height={50} alt="APS LOGO" className=""/>
                 </div>
                 <div className="w-full">
                     <div className="flex justify-between items-center">
