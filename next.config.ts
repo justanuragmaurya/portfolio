@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: ['pbs.twimg.com','eb7cw7lpb6.ufs.sh'],
+  }
 };
 
 export default nextConfig;
