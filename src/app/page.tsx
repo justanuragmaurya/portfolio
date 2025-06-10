@@ -1,3 +1,4 @@
+import Contact from "@/components/contact";
 import Education from "@/components/Education";
 import Experience from "@/components/Experience";
 import HeroSection from "@/components/Hero";
@@ -11,6 +12,7 @@ export default function Home() {
       <ProofOfWork/>
       <Experience/>
       <Education/>
+      <Contact/>
     </MaxWidthContainer>
   );
 }
