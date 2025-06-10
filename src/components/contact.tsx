@@ -6,6 +6,7 @@ import { RainbowButton } from "./magicui/rainbow-button";
 import { useRef, useState } from "react";
 import axios from "axios"
 import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 const font = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -16,7 +17,6 @@ export default function Contact(){
     const [loading,setLoading]= useState<boolean>(false);
     const emailRef = useRef<HTMLInputElement>(null);
     const messageRef = useRef<HTMLTextAreaElement>(null);
-    
     const handleClick = async()=>{
         setLoading(true);
         if(emailRef.current?.value=="" || messageRef.current?.value=="" ){
@@ -24,11 +24,23 @@ export default function Contact(){
             setLoading(false);
             return
         }
-        axios.post("/api/contact",{
-            email:emailRef.current?.value,
-            message:messageRef.current?.value
-        })
-        setLoading(false);
+        try {
+            await axios.post("/api/contact",{
+                email:emailRef.current?.value,
+                message:messageRef.current?.value
+            });
+            
+            // Clear the form after successful submission
+            if(emailRef.current) emailRef.current.value = "";
+            if(messageRef.current) messageRef.current.value = "";
+            
+            toast("✅ Message Sent");
+        } catch (error) {
+            toast.error("Failed to send message");
+            console.error("Error sending message:", error);
+        } finally {
+            setLoading(false);
+        }
     }
     
     return(
