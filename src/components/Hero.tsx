@@ -29,7 +29,7 @@ export default function HeroSection(){
                     I'm a MVP builder and full-stack developer, turning ideas into production-ready products—handling everything from concept to deployment with a complete modern tech stack.
                 </p>
                 <div className="flex flex-wrap gap-3 mt-2 justify-center md:justify-start items-center">
-                    <Link href={"/"} target="_blank">
+                    <Link href="mailto:contact@anuragmaurya.com">
                         <RainbowButton><Mail className="mr-2 h-4 w-4" /> Get in touch</RainbowButton>
                     </Link>
                     <Link href={"https://thumbnaily-storage.s3.ap-south-1.amazonaws.com/thumbnails/assests/resumeanuragmaurya.pdf"} target="_blank">

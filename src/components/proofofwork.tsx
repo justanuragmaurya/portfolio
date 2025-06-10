@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 import { Github, GithubIcon } from "lucide-react";
 import Link from "next/link";
+import { RainbowButton } from "./magicui/rainbow-button";
 
 const font = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -16,7 +17,7 @@ export default function ProofOfWork() {
     <MaxWidthContainer className="mt-16 flex flex-col items-center">
       <h1 className={`${font.className} font-semibold text-3xl`}>Proof Of Work </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-5 mt-2 p-2 hover:cursor-default">
-        {Projects.map((e, index) => {
+        {[...Projects].map((e, index) => {
           return (
             <div key={index} className="w-full border hover:scale-101 transition rounded-md overflow-hidden">
               <div className="overflow-hidden m-2 border rounded-sm">
@@ -38,12 +39,12 @@ export default function ProofOfWork() {
                     );
                   })}
                 </div>
-                
               </div>
             </div>
           );
         })}
       </div>
+      <RainbowButton className="w-max mt-5">More Projects</RainbowButton>
     </MaxWidthContainer>
   );
 }
