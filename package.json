@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "postinstall": "prisma generate",
-    "start": "next start"
+    "start": "npx prisma migrate dev --name init && next start"
   },
   "dependencies": {
     "@prisma/client": "6.9.0",
@@ -14,6 +14,7 @@
     "@radix-ui/react-separator": "^1.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-tooltip": "^1.2.7",
+    "@vercel/analytics": "^1.5.0",
     "axios": "^1.9.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

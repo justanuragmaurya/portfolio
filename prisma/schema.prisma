@@ -17,5 +17,5 @@ model Message{
 model SiteAnalytics{
   id String @id @default(uuid())
   siteName String @unique
-  visitors BigInt
+  visitors Int @default(0)
 }
