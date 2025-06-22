@@ -14,17 +14,12 @@ const font = Bricolage_Grotesque({
 export default function HeroSection() {
   return (
     <div className="pt-12 w-full flex flex-col md:flex-row gap-6 md:gap-8 md:justify-between md:items-center relative">
-        <div className="fixed top-0 left-0 m-5">
-            <ModeToggle/>
-        </div>
       <div className="flex justify-center md:hidden">
         <Image
-          src={
-            "https://pbs.twimg.com/profile_images/1928635890999394304/09YwaCu8_400x400.jpg"
-          }
+          src="/anurag.png"
           height={120}
           width={120}
-          alt="anurag&apos;s image"
+          alt="anurag  image"
           className="rounded-full border shadow-xl"
         />
       </div>
@@ -33,7 +28,7 @@ export default function HeroSection() {
         <h1 className={`text-4xl md:text-5xl font-semibold`}>
           I&apos;m{" "}
           <span className={`${font.className} font-black`}>
-            <AuroraText colors={["red", "orange"]}>Anurag</AuroraText>
+            <AuroraText colors={["cyan", "cyan"]}>Anurag</AuroraText>
           </span>
         </h1>
         <p className="text-primary/70 py-3 text-md">
@@ -95,10 +90,10 @@ export default function HeroSection() {
       <div className="hidden h-full md:block">
         <Image
           src={
-            "https://pbs.twimg.com/profile_images/1928635890999394304/09YwaCu8_400x400.jpg"
+            "/anurag.png"
           }
-          height={200}
-          width={200}
+          height={500}
+          width={500}
           alt="anurag&apos;s image"
           className="rounded-full border shadow-xl"
         />
