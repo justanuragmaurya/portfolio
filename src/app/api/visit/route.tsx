@@ -12,7 +12,7 @@ export async function GET() {
 
     const vists = data?.visitors;
 
-    const newVisitCount = vists! + BigInt(1);
+    const newVisitCount = vists! + 1;
     
     await db.siteAnalytics.update({
       where: {
