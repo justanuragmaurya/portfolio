@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import { File, GithubIcon, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
@@ -37,11 +38,15 @@ export default function HeroSection() {
           deployment with a complete modern tech stack.
         </p>
         <div className="flex flex-wrap gap-3 mt-2 justify-center md:justify-start items-center">
-          <Link href="mailto:contact@anuragmaurya.com">
+          <div onClick={()=>{ navigator.clipboard.writeText("contact@anuragmaurya.com").then(() => {
+            alert("Email copied to clipboard!");
+          }).catch(err => {
+            console.error("Failed to copy email: ", err);
+          });}}>
             <RainbowButton>
               <Mail className="mr-2 h-4 w-4" /> Get in touch
             </RainbowButton>
-          </Link>
+          </div>
           <Link
             href={
               "https://thumbnaily-storage.s3.ap-south-1.amazonaws.com/thumbnails/assests/auragmauryaresumee.pdf"
