@@ -1,11 +1,10 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { File, GithubIcon, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { Bricolage_Grotesque } from "next/font/google";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 import { AuroraText } from "@/components/magicui/aurora-text";
-import { ModeToggle } from "./mode-toggle";
 
 const font = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -38,11 +37,18 @@ export default function HeroSection() {
           deployment with a complete modern tech stack.
         </p>
         <div className="flex flex-wrap gap-3 mt-2 justify-center md:justify-start items-center">
-          <div onClick={()=>{ navigator.clipboard.writeText("contact@anuragmaurya.com").then(() => {
-            alert("Email copied to clipboard!");
-          }).catch(err => {
-            console.error("Failed to copy email: ", err);
-          });}}>
+          <div
+            onClick={() => {
+              navigator.clipboard
+                .writeText("contact@anuragmaurya.com")
+                .then(() => {
+                  alert("Email copied to clipboard!");
+                })
+                .catch((err) => {
+                  console.error("Failed to copy email: ", err);
+                });
+            }}
+          >
             <RainbowButton>
               <Mail className="mr-2 h-4 w-4" /> Get in touch
             </RainbowButton>
@@ -59,16 +65,16 @@ export default function HeroSection() {
             </RainbowButton>
           </Link>
         </div>
-        <div className="flex flex-wrap gap-3 mt-3 justify-center md:justify-start items-center">
+        <div className="flex flex-wrap gap-3 mt-5 justify-center md:justify-start items-center">
           <Link
             href={"https://x.com/intent/follow?screen_name=codeanuragg"}
             target="_blank"
           >
-            <div className="border p-2 rounded-full shadow-sm">
+            <div className="border p-3 rounded-full shadow-sm">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
+                width="20"
+                height="20"
                 fill="currentColor"
                 className="bi bi-twitter-x"
                 viewBox="0 0 16 16"
@@ -78,28 +84,26 @@ export default function HeroSection() {
             </div>
           </Link>
           <Link href="https://github.com/justanuragmaurya/" target="_blank">
-            <div className="border p-2 rounded-full shadow-sm">
-              <GithubIcon size={15} />
+            <div className="border p-3 rounded-full shadow-sm">
+              <GithubIcon size={20} />
             </div>
           </Link>
           <Link
             href={"https://www.linkedin.com/in/realanuragmaurya/"}
             target="_blank"
           >
-            <div className="border p-2 rounded-full shadow-sm">
-              <Linkedin size={15} />
+            <div className="border p-3 rounded-full shadow-sm">
+              <Linkedin size={20}/>
             </div>
           </Link>
         </div>
       </div>
       <div className="hidden h-full md:block">
         <Image
-          src={
-            "/anurag.png"
-          }
+          src={"/anurag.png"}
           height={500}
           width={500}
-          alt="anurag&apos;s image"
+          alt="anurag's image"
           className="rounded-full border shadow-xl"
         />
       </div>
