@@ -83,7 +83,7 @@ export const githubActivity: GithubActivity = {
   title: "Github Contributions",
   username: "justanuragmaurya",
   profileUrl: "https://github.com/justanuragmaurya",
-  blockMargin: 2
+  blockMargin: 3
 };
 
 const data = {

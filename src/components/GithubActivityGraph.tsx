@@ -11,12 +11,19 @@ const font = Bricolage_Grotesque({
 export default function GithubActivitySection() {
 
   return (
-    <div className="flex flex-col items-center mt-10 w-full">
-      <h1 className={`${font.className} font-semibold text-3xl py-2`}>{githubActivity.title}</h1>
-      <div className="flex w-full items-center gap-5 mt-5">
-        <Link href={githubActivity.profileUrl} target="__blank">
-          <GithubGraph username={githubActivity.username} blockMargin={githubActivity.blockMargin} />
-        </Link>
+    <div className="flex flex-col items-center mt-10 w-full px-2 sm:px-4">
+      <h1 className={`${font.className} font-semibold text-xl sm:text-2xl md:text-3xl py-2 text-center`}>{githubActivity.title}</h1>
+      <div className="flex w-full items-center justify-center mt-5">
+        <div className="w-full max-w-full overflow-hidden">
+          <Link href={githubActivity.profileUrl} target="__blank" className="block">
+            <div className="w-fit mx-auto max-w-full overflow-x-auto">
+              <GithubGraph 
+                username={githubActivity.username} 
+                blockMargin={githubActivity.blockMargin} 
+              />
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   );

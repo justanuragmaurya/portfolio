@@ -55,7 +55,20 @@ export const GithubGraph = memo(({
   const [contribution, setContribution] = useState<Activity[]>([]);
   const [loading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const { theme } = useTheme();
+
+  // Check if screen is mobile size
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const fetchData = useCallback(async () => {
     try {
@@ -79,6 +92,9 @@ export const GithubGraph = memo(({
     totalCount: `{{count}} contributions in the last year`,
   };
 
+  // Responsive block margin - smaller on mobile
+  const responsiveBlockMargin = isMobile ? Math.max(1, (blockMargin ?? 2) - 1) : (blockMargin ?? 2);
+
   if (error) {
     return (
       <div className="text-red-500 p-4 text-center">
@@ -88,24 +104,26 @@ export const GithubGraph = memo(({
   }
 
   return (
-    <div className="relative">
+    <div className="relative max-w-full">
       {loading && (
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 dark:border-white"></div>
         </div>
       )}
-      <ActivityCalendar
-        data={contribution}
-        maxLevel={4}
-        blockMargin={blockMargin ?? 2}
-        loading={loading}
-        labels={label}
-        theme={{
-          light: lightColorPalette,
-          dark: darkColorPalette,
-        }}
-        colorScheme={theme === "dark" ? "dark" : "light"}
-      />
+      <div className="overflow-x-auto">
+        <ActivityCalendar
+          data={contribution}
+          maxLevel={4}
+          blockMargin={responsiveBlockMargin}
+          loading={loading}
+          labels={label}
+          theme={{
+            light: lightColorPalette,
+            dark: darkColorPalette,
+          }}
+          colorScheme={theme === "dark" ? "dark" : "light"}
+        />
+      </div>
     </div>
   );
 });
