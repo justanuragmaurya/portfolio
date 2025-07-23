@@ -40,7 +40,7 @@ export default function BookMeetPage() {
   );
 }
 
-export function MeetComponent() {
+function MeetComponent() {
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({ namespace: "30min" });
