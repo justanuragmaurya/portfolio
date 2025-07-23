@@ -1,7 +1,7 @@
 "use client"
 import { Bricolage_Grotesque } from "next/font/google";
 import MaxWidthContainer from "./maxwidthcontainer";
-import { Projects } from "@/lib/projects";
+import { Projects } from "@/lib/data";
 import Image from "next/image";
 import { Github } from "lucide-react";
 import Link from "next/link";

@@ -7,6 +7,7 @@ import { useRef, useState } from "react";
 import axios from "axios"
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { contactForm } from "@/lib/data";
 
 const font = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -46,16 +47,16 @@ export default function Contact(){
     return(
         <div className="flex flex-col mb-10 p-5">
             <hr className="my-10 w-1/2 mx-auto"/>
-            <h1 className={`${font.className} font-semibold text-3xl mx-auto`}>Contact Me</h1>
+            <h1 className={`${font.className} font-semibold text-3xl mx-auto`}>{contactForm.title}</h1>
             <div className="w-full mt-5">
-                <h1>Your Email: </h1>
-                <Input ref={emailRef} placeholder="Enter your email here."/>
+                <h1>{contactForm.emailLabel}</h1>
+                <Input ref={emailRef} placeholder={contactForm.emailPlaceholder}/>
             </div>
             <div className="w-full mt-5">
-                <h1>Your Message: </h1>
-                <Textarea ref={messageRef} placeholder="Enter your email here." className="h-32"/>
+                <h1>{contactForm.messageLabel}</h1>
+                <Textarea ref={messageRef} placeholder={contactForm.messagePlaceholder} className="h-32"/>
             </div>
-            <RainbowButton onClick={handleClick} disabled={loading} className="mt-5">{loading?<div className="flex items-center gap-2"><Loader2 className="animate-spin"/>Sending message...</div>:"Send"}</RainbowButton>
+            <RainbowButton onClick={handleClick} disabled={loading} className="mt-5">{loading?<div className="flex items-center gap-2"><Loader2 className="animate-spin"/>{contactForm.sendingButton}</div>:contactForm.sendButton}</RainbowButton>
         </div>
     )
 }
