@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { File, GithubIcon, Linkedin, Mail } from "lucide-react";
+import { Calendar, File, GithubIcon, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { Bricolage_Grotesque } from "next/font/google";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
@@ -37,22 +37,11 @@ export default function HeroSection() {
           deployment with a complete modern tech stack.
         </p>
         <div className="flex flex-wrap gap-3 mt-2 justify-center md:justify-start items-center">
-          <div
-            onClick={() => {
-              navigator.clipboard
-                .writeText("contact@anuragmaurya.com")
-                .then(() => {
-                  alert("Email copied to clipboard!");
-                })
-                .catch((err) => {
-                  console.error("Failed to copy email: ", err);
-                });
-            }}
-          >
+          <Link href={"/meet"}>
             <RainbowButton>
-              <Mail className="mr-2 h-4 w-4" /> Get in touch
+              <Calendar className="mr-2 h-4 w-4" /> Book A Meet
             </RainbowButton>
-          </div>
+          </Link>
           <Link
             href={
               "https://thumbnaily-storage.s3.ap-south-1.amazonaws.com/thumbnails/assests/auragmauryaresumee.pdf"
@@ -66,6 +55,21 @@ export default function HeroSection() {
           </Link>
         </div>
         <div className="flex flex-wrap gap-3 mt-5 justify-center md:justify-start items-center">
+          <div
+            onClick={() => {
+              navigator.clipboard
+                .writeText("contact@anuragmaurya.com")
+                .then(() => {
+                  alert("Email copied to clipboard!");
+                })
+                .catch((err) => {
+                  console.error("Failed to copy email: ", err);
+                });
+            }}
+            className="border p-3 rounded-full shadow-sm"
+          >
+            <Mail />
+          </div>
           <Link
             href={"https://x.com/intent/follow?screen_name=codeanuragg"}
             target="_blank"
@@ -93,7 +97,7 @@ export default function HeroSection() {
             target="_blank"
           >
             <div className="border p-3 rounded-full shadow-sm">
-              <Linkedin size={20}/>
+              <Linkedin size={20} />
             </div>
           </Link>
         </div>

@@ -2,9 +2,11 @@ import Contact from "@/components/contact";
 import Education from "@/components/Education";
 import Experience from "@/components/Experience";
 import Footer from "@/components/footer";
+import GithubActivitySection from "@/components/GithubActivityGraph";
 import HeroSection from "@/components/Hero";
 import MaxWidthContainer from "@/components/maxwidthcontainer";
 import ProofOfWork from "@/components/proofofwork";
+import SkillsSection from "@/components/skillsection";
 
 export default function Home() {
   return (
@@ -12,6 +14,8 @@ export default function Home() {
       <HeroSection/>
       <ProofOfWork/>
       <Experience/>
+      <GithubActivitySection/>
+      <SkillsSection/>
       <Education/>
       <Contact/>
       <Footer/>
