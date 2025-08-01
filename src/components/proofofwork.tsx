@@ -3,7 +3,7 @@ import { Bricolage_Grotesque } from "next/font/google";
 import MaxWidthContainer from "./maxwidthcontainer";
 import { Projects } from "@/lib/data";
 import Image from "next/image";
-import { Github } from "lucide-react";
+import { Github, LinkIcon } from "lucide-react";
 import Link from "next/link";
 import { RainbowButton } from "./magicui/rainbow-button";
 import { useState } from "react";
@@ -39,7 +39,7 @@ export default function ProofOfWork() {
                     <h1 className={`${font.className} text-xl font-bold`}>{e.title} </h1>
                     <div className="text-xs flex gap-2 text-primary-foreground">
                         <Link href={e.githubLink}><button className="w-max flex gap-2 items-center border px-2 py-1 rounded-sm bg-secondary-foreground hover:scale-105 transition-transform duration-300 hover:cursor-pointer"><Github size={15}/>Github</button></Link>
-                        <Link href={e.liveLink}><button className="w-max flex gap-2 items-center border px-2 py-1 rounded-sm bg-secondary-foreground hover:scale-105 transition-transform duration-300 hover:cursor-pointer"> Live Link</button></Link>
+                        <Link href={e.liveLink}><button className="w-max flex gap-2 items-center border px-2 py-1 rounded-sm bg-secondary-foreground hover:scale-105 transition-transform duration-300 hover:cursor-pointer"><LinkIcon size={15}/> Live Link</button></Link>
                     </div>
                 </div>
                 <p className="text-sm text-primary/70 mt-3">{e.description}</p>
