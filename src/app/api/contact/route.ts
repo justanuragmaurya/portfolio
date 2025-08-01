@@ -38,7 +38,6 @@ ${message}
 }
 
 export async function POST(req: NextRequest) {
-  const db = new PrismaClient();
   try {
     const { email, message }: { email: string; message: string } =
       await req.json();
@@ -49,13 +48,6 @@ export async function POST(req: NextRequest) {
         message: "Empty Email / Message.",
       });
     }
-
-    await db.message.create({
-      data: {
-        email: email,
-        message: message
-      }
-    });
 
     try {
       await sendTelegramMessage(email, message);
@@ -74,8 +66,6 @@ export async function POST(req: NextRequest) {
       success: false,
       message: "Error processing request.",
     });
-  } finally {
-    await db.$disconnect();
   }
 }
 

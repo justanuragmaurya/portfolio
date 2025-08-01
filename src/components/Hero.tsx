@@ -6,6 +6,7 @@ import { Bricolage_Grotesque } from "next/font/google";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { personalInfo, socialLinks } from "@/lib/data";
+import { motion } from "motion/react";
 
 const font = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -25,26 +26,25 @@ export default function HeroSection() {
         />
       </div>
       <div className="text-center md:text-left px-4 md:px-0 max-w-2xl">
-        <h1 className={`text-2xl md:text-3xl font-medium`}>{personalInfo.greeting}</h1>
+        <h1 className={`text-2xl md:text-3xl font-medium`}>
+          {personalInfo.greeting}
+        </h1>
         <h1 className={`text-4xl md:text-5xl font-semibold`}>
           I&apos;m{" "}
           <span className={`${font.className} font-black`}>
-            <AuroraText colors={["cyan", "cyan"]}>{personalInfo.name}</AuroraText>
+            <AuroraText colors={["cyan", "cyan"]}>
+              {personalInfo.name}
+            </AuroraText>
           </span>
         </h1>
-        <p className="text-primary/70 py-3 text-md">
-          {personalInfo.title}
-        </p>
+        <p className="text-primary/70 py-3 text-md">{personalInfo.title}</p>
         <div className="flex flex-wrap gap-3 mt-2 justify-center md:justify-start items-center">
           <Link href={socialLinks.meetingLink}>
             <RainbowButton>
               <Calendar className="mr-2 h-4 w-4" /> Book A Meet
             </RainbowButton>
           </Link>
-          <Link
-            href={personalInfo.resumeLink}
-            target="_blank"
-          >
+          <Link href={personalInfo.resumeLink} target="_blank">
             <RainbowButton variant="outline">
               <File className="mr-2 h-4 w-4" />
               My Resume
@@ -67,10 +67,7 @@ export default function HeroSection() {
           >
             <Mail />
           </div>
-          <Link
-            href={socialLinks.twitter}
-            target="_blank"
-          >
+          <Link href={socialLinks.twitter} target="_blank">
             <div className="border p-3 rounded-full shadow-sm">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -89,10 +86,7 @@ export default function HeroSection() {
               <GithubIcon size={20} />
             </div>
           </Link>
-          <Link
-            href={socialLinks.linkedin}
-            target="_blank"
-          >
+          <Link href={socialLinks.linkedin} target="_blank">
             <div className="border p-3 rounded-full shadow-sm">
               <Linkedin size={20} />
             </div>

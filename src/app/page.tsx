@@ -14,7 +14,6 @@ export default function Home() {
       <HeroSection/>
       <ProofOfWork/>
       <Experience/>
-      <GithubActivitySection/>
       <SkillsSection/>
       <Education/>
       <Contact/>

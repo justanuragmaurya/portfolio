@@ -110,7 +110,7 @@ export const GithubGraph = memo(({
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 dark:border-white"></div>
         </div>
       )}
-      <div className="overflow-x-auto">
+      <div className="">
         <ActivityCalendar
           data={contribution}
           maxLevel={4}

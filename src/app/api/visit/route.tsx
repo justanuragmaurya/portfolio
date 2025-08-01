@@ -33,6 +33,6 @@ export async function GET() {
       message:`${e}`
     });
   } finally {
-    db.$disconnect();
+    await db.$disconnect();
   }
 }

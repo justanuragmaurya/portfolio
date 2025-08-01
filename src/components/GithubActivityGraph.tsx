@@ -16,7 +16,7 @@ export default function GithubActivitySection() {
       <div className="flex w-full items-center justify-center mt-5">
         <div className="w-full max-w-full overflow-hidden">
           <Link href={githubActivity.profileUrl} target="__blank" className="block">
-            <div className="w-fit mx-auto max-w-full overflow-x-auto">
+            <div className="w-full mx-auto max-w-full">
               <GithubGraph 
                 username={githubActivity.username} 
                 blockMargin={githubActivity.blockMargin} 
