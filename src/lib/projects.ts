@@ -8,6 +8,14 @@ export const Projects:Projects[] = [
         githubLink:"https://github.com/justanuragmaurya/thumbnaily-ai"
     },
     {
+        title:"Fit Check",
+        description:"A virtual try-on platform that uses AI to let users upload reference images and prompts, generating realistic previews of outfits.",
+        image:'/fitcheck.png',
+        techUsed:["NextJS" , "Typescript","AWS S3" , "Postgresql" , "Prisma" , "Virtual Machine" , "CI/CD"],
+        liveLink:"https://fitcheck.anuragmaurya.com",
+        githubLink:"https://github.com/justanuragmaurya/virtual-try-on"
+    },
+    {
         title:"Yaatra AI",
         description:"A full-stack AI-powered travel planning application using React and Vite for the frontend with Express as the backend",
         image:"/aiyatra.png",

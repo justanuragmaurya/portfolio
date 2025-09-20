@@ -2,7 +2,6 @@ import Contact from "@/components/contact";
 import Education from "@/components/Education";
 import Experience from "@/components/Experience";
 import Footer from "@/components/footer";
-import GithubActivitySection from "@/components/GithubActivityGraph";
 import HeroSection from "@/components/Hero";
 import MaxWidthContainer from "@/components/maxwidthcontainer";
 import ProofOfWork from "@/components/proofofwork";
