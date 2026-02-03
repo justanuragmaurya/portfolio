@@ -4,7 +4,7 @@ export const personalInfo: PersonalInfo = {
   title: "I'm a MVP builder and full-stack developer, turning ideas into production-ready products—handling everything from concept to deployment with a complete modern tech stack.",
   email: "contact@anuragmaurya.com",
   image: "/anurag.png",
-  resumeLink: "https://thumbnaily-storage.s3.ap-south-1.amazonaws.com/thumbnails/assests/auragmauryaresumee.pdf"
+  resumeLink: "https://thumbnaily-storage.s3.ap-south-1.amazonaws.com/thumbnails/uploads/anuragmaurya.pdf"
 };
 
 export const socialLinks: SocialLinks = {
