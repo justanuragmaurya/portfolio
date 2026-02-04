@@ -4,10 +4,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { personalInfo, socialLinks } from "@/lib/data";
 import { ArrowUpRight, Copy, FileText, Calendar } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Hero() {
   const [copied, setCopied] = useState(false);
+  const [currentTime, setCurrentTime] = useState("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setCurrentTime(now.toLocaleTimeString('en-US', { 
+        hour12: false, 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit' 
+      }));
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const copyEmail = () => {
     navigator.clipboard.writeText(personalInfo.email);
@@ -125,23 +141,8 @@ export default function Hero() {
               </div>
             </div>
             <p className="mono-text text-[10px] tracking-wider text-[#525252] mt-2 text-center">
-              [2024]
+              [{currentTime}]
             </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile image */}
-      <div className="md:hidden px-6 pb-8">
-        <div className="dashed-border p-2 max-w-[200px] mx-auto">
-          <div className="solid-border">
-            <Image
-              src={personalInfo.image}
-              width={200}
-              height={200}
-              alt={personalInfo.name}
-              className="object-cover grayscale"
-            />
           </div>
         </div>
       </div>

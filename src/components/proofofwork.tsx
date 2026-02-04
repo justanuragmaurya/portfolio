@@ -7,11 +7,11 @@ import { ArrowUpRight, Github } from "lucide-react";
 
 export default function Projects() {
   return (
-    <section className="w-full py-12 md:py-20">
+    <section className="w-full py-6 md:py-10">
       <div className="max-w-5xl mx-auto px-6">
         {/* Section header */}
         <div className="flex items-center gap-4 mb-8">
-          <span className="section-label">Selected Work</span>
+          <span className="section-label">My Works</span>
           <div className="flex-1 divider-dashed" />
           <span className="mono-text text-xs text-[#525252]">
             [{String(projectsData.length).padStart(2, '0')}]
