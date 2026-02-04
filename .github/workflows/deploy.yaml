@@ -1,0 +1,37 @@
+name: Portfolio
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone the repo.
+      uses: actions/checkout@v4
+    
+    - name: Login to docker hub
+      uses: docker/login-activity@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        username: ${{ secrets.DOCKER_PASSWORD }}
+    
+    - name: Build image and push
+      run : |
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/portfolio:latest .
+        docker push ${{ secrets.DOCKER_USERNAME }}/portfolio:latest
+    
+    - name: SSH into EC and pull / run the image.
+      uses: appleboy/ssh-action@v1
+      with: 
+      - host: ${{ secrets.EC2_HOST }}
+      - username: ${{secrets.EC2_USER}}
+      - key: ${{ secrets.EC2_SSH_KEY }}
+      script: | 
+        docker pull ${{secrets.DOCKER_USERNAME}}/portfolio:latest
+        docker stop portfolio || true
+        docker rm portfolio || true
+        docker run -d \
+          --name portfolio \
+          -p 3000:3000
