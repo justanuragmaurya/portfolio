@@ -15,7 +15,7 @@ jobs:
       uses: docker/login-activity@v3
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
-        username: ${{ secrets.DOCKER_PASSWORD }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
     
     - name: Build image and push
       run : |
