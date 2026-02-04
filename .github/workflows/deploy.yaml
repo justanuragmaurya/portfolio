@@ -25,13 +25,13 @@ jobs:
     - name: SSH into EC and pull / run the image.
       uses: appleboy/ssh-action@v1
       with: 
-      - host: ${{ secrets.EC2_HOST }}
-      - username: ${{secrets.EC2_USER}}
-      - key: ${{ secrets.EC2_SSH_KEY }}
-      script: | 
-        docker pull ${{secrets.DOCKER_USERNAME}}/portfolio:latest
-        docker stop portfolio || true
-        docker rm portfolio || true
-        docker run -d \
-          --name portfolio \
-          -p 3000:3000
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{secrets.EC2_USER}}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: | 
+          docker pull ${{secrets.DOCKER_USERNAME}}/portfolio:latest
+          docker stop portfolio || true
+          docker rm portfolio || true
+          docker run -d \
+            --name portfolio \
+            -p 3000:3000
