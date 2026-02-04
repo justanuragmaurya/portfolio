@@ -1,30 +1,55 @@
-import { Bricolage_Grotesque } from "next/font/google";
-import Image from "next/image";
 import { education } from "@/lib/data";
+import Image from "next/image";
 
-const font = Bricolage_Grotesque({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
-});
-
-export default function Education(){
-    return(
-        <div className="flex flex-col items-center p-5 mt-5 w-full">
-            <h1 className={`${font.className} font-semibold text-3xl`}>Education</h1>
-            {education.map((edu, index) => (
-                <div key={index} className="flex w-full items-center gap-5 mt-5">
-                    <div>
-                        <Image src={edu.logo} width={50} height={50} alt={`${edu.institution} LOGO`} className={edu.logoClassName}/>
-                    </div>
-                    <div className="w-full">
-                        <div className="flex justify-between items-center">
-                            <div className="items-center gap-2"><h1 className="font-bold">{edu.institution}</h1></div>
-                            <h1 className="text-sm text-primary/70">{edu.duration}</h1>
-                        </div>
-                        <span className="text-sm font-normal text-primary/70">{edu.degree}</span>
-                    </div>
-                </div>
-            ))}
+export default function Education() {
+  return (
+    <section className="w-full py-12 md:py-20">
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Section header */}
+        <div className="flex items-center gap-4 mb-12">
+          <span className="section-label">Education</span>
+          <div className="flex-1 divider-dashed" />
+          <span className="mono-text text-xs text-[#525252]">
+            [{String(education.length).padStart(2, '0')} Institutions]
+          </span>
         </div>
-    )
+
+        {/* Education list */}
+        <div className="space-y-6">
+          {education.map((edu, index) => (
+            <div
+              key={index}
+              className="solid-border p-6 flex items-start gap-6 hover:bg-[#0f0f0f] transition-colors"
+            >
+              {/* Institution logo */}
+              <div className="dashed-border-thin p-2 shrink-0">
+                <Image
+                  src={edu.logo}
+                  width={48}
+                  height={48}
+                  alt={edu.institution}
+                  className="object-contain"
+                />
+              </div>
+
+              {/* Education details */}
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                  <h3 className="text-base font-normal tracking-tight">
+                    {edu.institution}
+                  </h3>
+                  <span className="mono-text text-xs text-[#737373]">
+                    {edu.duration}
+                  </span>
+                </div>
+                <p className="mono-text text-sm text-[#a3a3a3] mt-1">
+                  {edu.degree}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

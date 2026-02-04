@@ -1,107 +1,150 @@
 "use client";
+
 import Image from "next/image";
-import { Calendar, File, GithubIcon, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
-import { Bricolage_Grotesque } from "next/font/google";
-import { RainbowButton } from "@/components/magicui/rainbow-button";
-import { AuroraText } from "@/components/magicui/aurora-text";
 import { personalInfo, socialLinks } from "@/lib/data";
-import { motion } from "motion/react";
+import { ArrowUpRight, Copy, FileText, Calendar } from "lucide-react";
+import { useState } from "react";
 
-const font = Bricolage_Grotesque({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
-});
+export default function Hero() {
+  const [copied, setCopied] = useState(false);
 
-export default function HeroSection() {
+  const copyEmail = () => {
+    navigator.clipboard.writeText(personalInfo.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <div className="pt-12 w-full flex flex-col md:flex-row gap-6 md:gap-8 md:justify-between md:items-center relative">
-      <div className="flex justify-center md:hidden">
-        <Image
-          src={personalInfo.image}
-          height={120}
-          width={120}
-          alt="anurag image"
-          className="rounded-full border shadow-xl"
-        />
-      </div>
-      <div className="text-center md:text-left px-4 md:px-0 max-w-2xl">
-        <h1 className={`text-2xl md:text-3xl font-medium`}>
-          {personalInfo.greeting}
-        </h1>
-        <h1 className={`text-4xl md:text-5xl font-semibold`}>
-          I&apos;m{" "}
-          <span className={`${font.className} font-black`}>
-            <AuroraText colors={["cyan", "cyan"]}>
-              {personalInfo.name}
-            </AuroraText>
+    <section className="w-full">
+      {/* Top navigation bar */}
+      <div className="w-full solid-border border-t-0 border-x-0">
+        <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+          <span className="mono-text text-sm tracking-[0.15em] uppercase">
+            {personalInfo.name}
           </span>
-        </h1>
-        <p className="text-primary/70 py-3 text-md">{personalInfo.title}</p>
-        <div className="flex flex-wrap gap-3 mt-2 justify-center md:justify-start items-center">
-          <Link href={socialLinks.meetingLink}>
-            <RainbowButton>
-              <Calendar className="mr-2 h-4 w-4" /> Book A Meet
-            </RainbowButton>
-          </Link>
-          <Link href={personalInfo.resumeLink} target="_blank">
-            <RainbowButton variant="outline">
-              <File className="mr-2 h-4 w-4" />
-              My Resume
-            </RainbowButton>
-          </Link>
-        </div>
-        <div className="flex flex-wrap gap-3 mt-5 justify-center md:justify-start items-center">
-          <div
-            onClick={() => {
-              navigator.clipboard
-                .writeText(personalInfo.email)
-                .then(() => {
-                  alert("Email copied to clipboard!");
-                })
-                .catch((err) => {
-                  console.error("Failed to copy email: ", err);
-                });
-            }}
-            className="border p-3 rounded-full shadow-sm"
-          >
-            <Mail />
+          <div className="flex items-center gap-1">
+            <span className="w-2 h-2 bg-[#22c55e] animate-pulse-slow" />
+            <span className="mono-text text-[10px] tracking-wider uppercase text-[#737373] ml-2">
+              Available for work
+            </span>
           </div>
-          <Link href={socialLinks.twitter} target="_blank">
-            <div className="border p-3 rounded-full shadow-sm">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                className="bi bi-twitter-x"
-                viewBox="0 0 16 16"
-              >
-                <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
-              </svg>
-            </div>
-          </Link>
-          <Link href={socialLinks.github} target="_blank">
-            <div className="border p-3 rounded-full shadow-sm">
-              <GithubIcon size={20} />
-            </div>
-          </Link>
-          <Link href={socialLinks.linkedin} target="_blank">
-            <div className="border p-3 rounded-full shadow-sm">
-              <Linkedin size={20} />
-            </div>
-          </Link>
         </div>
       </div>
-      <div className="hidden h-full md:block">
-        <Image
-          src={personalInfo.image}
-          height={500}
-          width={500}
-          alt="anurag's image"
-          className="rounded-full border shadow-xl"
-        />
+
+      {/* Main hero content */}
+      <div className="max-w-5xl mx-auto px-6 py-12 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-start">
+          {/* Left content */}
+          <div className="space-y-8">
+            {/* Greeting box */}
+            <div className="card-minimal">
+              <p className="section-label mb-4">Introduction</p>
+              <h1 className="text-3xl md:text-4xl font-light leading-tight tracking-tight">
+                {personalInfo.greeting}
+                <br />
+                <span className="mono-text text-[#a3a3a3]">I build</span>{" "}
+                <span className="font-normal">MVPs</span>
+                <br />
+                <span className="mono-text text-[#a3a3a3]">and</span>{" "}
+                <span className="font-normal">full-stack products</span>
+              </h1>
+            </div>
+
+            {/* Description */}
+            <div className="solid-border p-6 bg-[#0a0a0a]">
+              <p className="text-[#a3a3a3] leading-relaxed text-sm md:text-base">
+                {personalInfo.title}
+              </p>
+            </div>
+
+            {/* Action buttons */}
+            <div className="flex flex-wrap gap-3">
+              <Link href={socialLinks.meetingLink} className="btn-minimal-solid inline-flex items-center gap-2">
+                <Calendar size={14} />
+                Book a Call
+                <ArrowUpRight size={12} />
+              </Link>
+              <Link href={personalInfo.resumeLink} target="_blank" className="btn-minimal inline-flex items-center gap-2">
+                <FileText size={14} />
+                Resume
+                <ArrowUpRight size={12} />
+              </Link>
+            </div>
+
+            {/* Social links */}
+            <div className="flex flex-wrap items-center gap-4 pt-4">
+              <button
+                onClick={copyEmail}
+                className="group flex items-center gap-2 mono-text text-xs tracking-wider text-[#737373] hover:text-[#fafafa] transition-colors"
+              >
+                <Copy size={12} />
+                {copied ? "Copied!" : "Copy Email"}
+              </button>
+              <span className="text-[#333333]">/</span>
+              <Link
+                href={socialLinks.github}
+                target="_blank"
+                className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#fafafa] transition-colors inline-flex items-center gap-1"
+              >
+                GitHub
+                <ArrowUpRight size={10} />
+              </Link>
+              <span className="text-[#333333]">/</span>
+              <Link
+                href={socialLinks.twitter}
+                target="_blank"
+                className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#fafafa] transition-colors inline-flex items-center gap-1"
+              >
+                Twitter
+                <ArrowUpRight size={10} />
+              </Link>
+              <span className="text-[#333333]">/</span>
+              <Link
+                href={socialLinks.linkedin}
+                target="_blank"
+                className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#fafafa] transition-colors inline-flex items-center gap-1"
+              >
+                LinkedIn
+                <ArrowUpRight size={10} />
+              </Link>
+            </div>
+          </div>
+
+          {/* Right - Image */}
+          <div className="hidden md:block">
+            <div className="dashed-border p-2">
+              <div className="solid-border">
+                <Image
+                  src={personalInfo.image}
+                  width={280}
+                  height={280}
+                  alt={personalInfo.name}
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
+            </div>
+            <p className="mono-text text-[10px] tracking-wider text-[#525252] mt-2 text-center">
+              [2024]
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
+
+      {/* Mobile image */}
+      <div className="md:hidden px-6 pb-8">
+        <div className="dashed-border p-2 max-w-[200px] mx-auto">
+          <div className="solid-border">
+            <Image
+              src={personalInfo.image}
+              width={200}
+              height={200}
+              alt={personalInfo.name}
+              className="object-cover grayscale"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

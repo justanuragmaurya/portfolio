@@ -17,7 +17,7 @@ export const socialLinks: SocialLinks = {
 
 export const skills: string[] = [
   "JavaScript",
-  "TypeScript", 
+  "TypeScript",
   "Next.js",
   "Docker",
   "React",
@@ -32,7 +32,8 @@ export const skills: string[] = [
   "Express.js",
   "Git",
   "MySQL",
-  "Turborepo"
+  "Turborepo",
+  "Rust"
 ];
 
 export const education: EducationItem[] = [
@@ -40,8 +41,8 @@ export const education: EducationItem[] = [
     institution: "Lovely Professional University",
     degree: "B.Tech CSE with specialization in AI and ML",
     duration: "Graduating in May 2027",
-    logo: "/lpulogo.jpg",
-    logoClassName: "rounded-full"
+    logo: "https://www.lpu.in/authenticate/lpu%20logo.png",
+    logoClassName: ""
   },
   {
     institution: "Army Public School",
@@ -54,11 +55,11 @@ export const education: EducationItem[] = [
 
 export const experience: ExperienceItem[] = [
   {
-    company: "Hairiyapa",
+    company: "Event Eye — Event Management Startup",
     position: "Fullstack Developer Intern",
-    duration: "Oct 2024 - Dec 2024",
-    logo: "/hlogo.svg",
-    logoClassName: "rounded-full dark:invert"
+    duration: "Jul 2025 – Sept 2025",
+    logo: "https://www.eventeye.in/logo/whitelogo.svg",
+    logoClassName: ""
   }
 ];
 

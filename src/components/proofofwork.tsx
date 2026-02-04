@@ -1,69 +1,96 @@
-"use client"
-import { Bricolage_Grotesque } from "next/font/google";
-import MaxWidthContainer from "./maxwidthcontainer";
-import { Projects } from "@/lib/data";
+"use client";
+
+import { Projects as projectsData } from "@/lib/projects";
 import Image from "next/image";
-import { Github, LinkIcon } from "lucide-react";
 import Link from "next/link";
-import { RainbowButton } from "./magicui/rainbow-button";
-import { useState } from "react";
+import { ArrowUpRight, Github } from "lucide-react";
 
-const font = Bricolage_Grotesque({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
-});
-
-export default function ProofOfWork() {
-  const [showAll, setShowAll] = useState(false);
-  
-  const displayedProjects = showAll ? Projects : Projects.slice(0, 4);
-  
+export default function Projects() {
   return (
-    <MaxWidthContainer className="mt-8 flex flex-col items-center">
-      <h1 className={`${font.className} font-semibold text-3xl`}>Proof Of Work </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-5 mt-2 p-2 hover:cursor-default">
-        {displayedProjects.map((e, index) => {
-          return (
-            <div key={index} className="w-full border hover:scale-101 transition rounded-md overflow-hidden">
-              <div className="overflow-hidden m-2 border rounded-sm">
-                <Image 
-                  src={`${e.image}`} 
-                  width={1280} 
-                  height={720} 
-                  alt="Project Image" 
-                  className="object-cover transition-transform duration-300 -z-10 hover:scale-105"
-                />
-              </div>
-              <div className="p-3 flex flex-col">
-                <div className="flex justify-between">
-                    <h1 className={`${font.className} text-xl font-bold`}>{e.title} </h1>
-                    <div className="text-xs flex gap-2 text-primary-foreground">
-                        <Link href={e.githubLink}><button className="w-max flex gap-2 items-center border px-2 py-1 rounded-sm bg-secondary-foreground hover:scale-105 transition-transform duration-300 hover:cursor-pointer"><Github size={15}/>Github</button></Link>
-                        <Link href={e.liveLink}><button className="w-max flex gap-2 items-center border px-2 py-1 rounded-sm bg-secondary-foreground hover:scale-105 transition-transform duration-300 hover:cursor-pointer"><LinkIcon size={15}/> Live Link</button></Link>
+    <section className="w-full py-12 md:py-20">
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Section header */}
+        <div className="flex items-center gap-4 mb-8">
+          <span className="section-label">Selected Work</span>
+          <div className="flex-1 divider-dashed" />
+          <span className="mono-text text-xs text-[#525252]">
+            [{String(projectsData.length).padStart(2, '0')}]
+          </span>
+        </div>
+
+        {/* Projects list - compact */}
+        <div className="space-y-4">
+          {projectsData.map((project, index) => (
+            <article
+              key={index}
+              className="solid-border p-4 hover:bg-[#0f0f0f] transition-colors group"
+            >
+              <div className="flex flex-col md:flex-row md:items-center gap-4">
+                {/* Project image - smaller with link */}
+                <Link
+                  href={project.liveLink}
+                  target="_blank"
+                  className="solid-border overflow-hidden shrink-0 w-full md:w-48 h-28 block"
+                >
+                  <Image
+                    src={project.image}
+                    width={200}
+                    height={112}
+                    alt={project.title}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 hover:scale-105"
+                  />
+                </Link>
+
+                {/* Project info */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="text-base font-normal tracking-tight">
+                        {project.title}
+                      </h3>
+                      <p className="mono-text text-[10px] text-[#737373] mt-1 line-clamp-1">
+                        {project.description}
+                      </p>
                     </div>
-                </div>
-                <p className="text-sm text-primary/70 mt-3">{e.description}</p>
-                <div className="text-xs flex flex-wrap gap-2 my-2">
-                  {e.techUsed.map((y, index) => {
-                    return (
-                      <h2 key={index} className="rounded-full border px-3 py-0.5">{y}</h2>
-                    );
-                  })}
+                    <div className="flex items-center gap-2 shrink-0">
+                      <Link
+                        href={project.githubLink}
+                        target="_blank"
+                        className="p-2 solid-border hover:bg-[#171717] transition-colors"
+                        aria-label="View source code"
+                      >
+                        <Github size={14} />
+                      </Link>
+                      <Link
+                        href={project.liveLink}
+                        target="_blank"
+                        className="p-2 solid-border hover:bg-[#171717] transition-colors"
+                        aria-label="View live site"
+                      >
+                        <ArrowUpRight size={14} />
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Tech tags - compact */}
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {project.techUsed.slice(0, 4).map((tech, techIndex) => (
+                      <span key={techIndex} className="tag-minimal">
+                        {tech}
+                      </span>
+                    ))}
+                    {project.techUsed.length > 4 && (
+                      <span className="tag-minimal">
+                        +{project.techUsed.length - 4}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            </article>
+          ))}
+        </div>
       </div>
-      
-      {Projects.length > 4 && (
-        <RainbowButton 
-          className="w-max mt-5" 
-          onClick={() => setShowAll(!showAll)}
-        >
-          {showAll ? "Show Less" : "More Projects"}
-        </RainbowButton>
-      )}
-    </MaxWidthContainer>
+    </section>
   );
 }

@@ -1,20 +1,44 @@
-"use client"
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Bricolage_Grotesque } from "next/font/google";
-import Pulse from "./pulse";
+"use client";
+
 import Link from "next/link";
 import { footerInfo } from "@/lib/data";
-
-const font = Bricolage_Grotesque({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
-});
+import { ArrowUp } from "lucide-react";
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <div className="flex flex-col gap-5 items-center justify-center my-10 text-sm text-primary/70">
-        <h2 className={`text-sm ${font.className}`}>Designed & Developed by <Link href={footerInfo.designerLink} target="__blank"><span className="text-blue-300 underline">{footerInfo.designerName}</span></Link></h2>
-    </div>
+    <footer className="w-full solid-border border-b-0">
+      <div className="max-w-5xl mx-auto px-6 py-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          {/* Left - Credits */}
+          <div className="flex items-center gap-2">
+            <span className="mono-text text-xs text-[#737373]">
+              Designed & Built by
+            </span>
+            <Link
+              href={footerInfo.designerLink}
+              target="_blank"
+              className="mono-text text-xs tracking-wider hover:text-[#a3a3a3] transition-colors"
+            >
+              {footerInfo.designerName}
+            </Link>
+          </div>
+
+
+
+          {/* Right - Back to top */}
+          <button
+            onClick={scrollToTop}
+            className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#fafafa] transition-colors inline-flex items-center gap-1"
+          >
+            Back to Top
+            <ArrowUp size={12} />
+          </button>
+        </div>
+      </div>
+    </footer>
   );
 }

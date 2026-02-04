@@ -1,20 +1,24 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
-import Providers from "@/components/providers";
-import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/next";
 
-const font = Poppins({
+const inter = Inter({
   subsets: ['latin'],
-  weight: [
-    "100", "200", "300", "400", "500", "600", "700", "800", "900"
-  ]
-})
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const spaceMono = Space_Mono({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-mono',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  title: "Anurag Maurya",
-  description: "Fullstack Developer ",
+  title: "Anurag Maurya — Fullstack Developer",
+  description: "MVP builder and full-stack developer, turning ideas into production-ready products.",
 };
 
 export default function RootLayout({
@@ -24,14 +28,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${font.className} antialiased`}
-      >
-        <Providers>
+      <body className={`${inter.variable} ${spaceMono.variable} font-sans antialiased`}>
+        <div className="min-h-screen grid-pattern">
           {children}
-          <Toaster/>
-          <Analytics/>
-        </Providers>
+          <Analytics />
+        </div>
       </body>
     </html>
   );

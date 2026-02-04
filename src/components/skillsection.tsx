@@ -1,22 +1,34 @@
-import { Bricolage_Grotesque } from "next/font/google";
 import { skills } from "@/lib/data";
 
-const font = Bricolage_Grotesque({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
-});
+export default function Skills() {
+  return (
+    <section className="w-full py-12 md:py-20">
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Section header */}
+        <div className="flex items-center gap-4 mb-12">
+          <span className="section-label">Technical Skills</span>
+          <div className="flex-1 divider-dashed" />
+          <span className="mono-text text-xs text-[#525252]">
+            [{String(skills.length).padStart(2, '0')} Technologies]
+          </span>
+        </div>
 
-export default function SkillsSection(){
-    return(
-            <div className="flex flex-col items-center p-5 mt-10 w-full">
-                <h1 className={`${font.className} font-semibold text-3xl`}>Skills</h1>
-                <div className="flex w-full gap-5 mt-5 flex-wrap mx-auto items-center justify-center"> 
-                    {skills.map((skill, index)=>{
-                        return(
-                            <div key={index} className="bg-primary text-primary-foreground py-0.5 px-3 rounded-md text-sm">{skill}</div>
-                        )
-                    })}
-                </div>
-            </div>
-    )
+        {/* Skills grid */}
+        <div className="dashed-border p-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-px bg-[#262626]">
+            {skills.map((skill, index) => (
+              <div
+                key={index}
+                className="bg-[#0a0a0a] p-4 text-center hover:bg-[#171717] transition-colors group"
+              >
+                <span className="mono-text text-xs tracking-wider text-[#a3a3a3] group-hover:text-[#fafafa] transition-colors">
+                  {skill}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

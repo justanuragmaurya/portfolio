@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'eb7cw7lpb6.ufs.sh',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.lpu.in',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.eventeye.in',
+      },
     ],
   }
 };

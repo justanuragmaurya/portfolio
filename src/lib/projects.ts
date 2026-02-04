@@ -16,12 +16,12 @@ export const Projects:Projects[] = [
         githubLink:"https://github.com/justanuragmaurya/virtual-try-on"
     },
     {
-        title:"Yaatra AI",
-        description:"A full-stack AI-powered travel planning application using React and Vite for the frontend with Express as the backend",
-        image:"/aiyatra.png",
-        techUsed:["React-Vite" , "Typescript", "GenAi" , "OpenAI SDK","TailwindCSS"],
-        liveLink:"https://aiyatra.anuragmaurya.com",
-        githubLink:"https://github.com/justanuragmaurya/ai-trip-planner"
+        title:"Raw HTTP Server From Scratch",
+        description:"Implemented an HTTP/1.1 server from scratch in Rust using raw TCP sockets without any web frameworks. Manually parsed 100% of HTTP requests, including headers, body, and etc handling from byte streams.",
+        image:"/raw_http.png",
+        techUsed:["Rust" , "TCP", "Systems Programming", "HTTP/1.1", "Raw Sockets"],
+        liveLink:"https://blog.anuragmaurya.com/blog/raw-http",
+        githubLink:"https://github.com/justanuragmaurya/raw-tcp-server"
     },
     {
         title:"DeCerts",
@@ -30,6 +30,14 @@ export const Projects:Projects[] = [
         techUsed:["React-Vite" , "Solana" , "Blockchain" ,"Metaplex NFT" , "RPC Nodes"],
         liveLink:"https://decerts.anuragmaurya.com",
         githubLink:"https://github.com/justanuragmaurya/decerts"
+    },
+    {
+        title:"Yaatra AI",
+        description:"A full-stack AI-powered travel planning application using React and Vite for the frontend with Express as the backend",
+        image:"/aiyatra.png",
+        techUsed:["React-Vite" , "Typescript", "GenAi" , "OpenAI SDK","TailwindCSS"],
+        liveLink:"https://aiyatra.anuragmaurya.com",
+        githubLink:"https://github.com/justanuragmaurya/ai-trip-planner"
     },
     {
         title:"Sol Devta",

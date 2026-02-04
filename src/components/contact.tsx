@@ -1,62 +1,78 @@
-"use client"
-import { Bricolage_Grotesque } from "next/font/google";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
-import { RainbowButton } from "./magicui/rainbow-button";
-import { useRef, useState } from "react";
-import axios from "axios"
-import { Loader2 } from "lucide-react";
-import { toast } from "sonner";
-import { contactForm } from "@/lib/data";
+import { personalInfo } from "@/lib/data";
+import { ArrowUpRight, Mail } from "lucide-react";
+import Link from "next/link";
+import { socialLinks } from "@/lib/data";
 
-const font = Bricolage_Grotesque({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
-});
-
-export default function Contact(){
-    const [loading,setLoading]= useState<boolean>(false);
-    const emailRef = useRef<HTMLInputElement>(null);
-    const messageRef = useRef<HTMLTextAreaElement>(null);
-    const handleClick = async()=>{
-        setLoading(true);
-        if(emailRef.current?.value=="" || messageRef.current?.value=="" ){
-            console.log("Empty");
-            setLoading(false);
-            return
-        }
-        try {
-            await axios.post("/api/contact",{
-                email:emailRef.current?.value,
-                message:messageRef.current?.value
-            });
-            
-            // Clear the form after successful submission
-            if(emailRef.current) emailRef.current.value = "";
-            if(messageRef.current) messageRef.current.value = "";
-            
-            toast("✅ Message Sent");
-        } catch (error) {
-            toast.error("Failed to send message");
-            console.error("Error sending message:", error);
-        } finally {
-            setLoading(false);
-        }
-    }
-    
-    return(
-        <div className="flex flex-col mb-10 p-5">
-            <hr className="my-10 w-1/2 mx-auto"/>
-            <h1 className={`${font.className} font-semibold text-3xl mx-auto`}>{contactForm.title}</h1>
-            <div className="w-full mt-5">
-                <h1>{contactForm.emailLabel}</h1>
-                <Input ref={emailRef} placeholder={contactForm.emailPlaceholder}/>
-            </div>
-            <div className="w-full mt-5">
-                <h1>{contactForm.messageLabel}</h1>
-                <Textarea ref={messageRef} placeholder={contactForm.messagePlaceholder} className="h-32"/>
-            </div>
-            <RainbowButton onClick={handleClick} disabled={loading} className="mt-5">{loading?<div className="flex items-center gap-2"><Loader2 className="animate-spin"/>{contactForm.sendingButton}</div>:contactForm.sendButton}</RainbowButton>
+export default function Contact() {
+  return (
+    <section className="w-full py-12 md:py-20">
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Section header */}
+        <div className="flex items-center gap-4 mb-12">
+          <span className="section-label">Get in Touch</span>
+          <div className="flex-1 divider-dashed" />
         </div>
-    )
+
+        <div className="dashed-border p-8 md:p-12">
+          <div className="max-w-2xl">
+            <p className="text-[#a3a3a3] leading-relaxed text-sm md:text-base mb-8">
+              Have a project in mind or want to collaborate? Feel free to reach out.
+              I&apos;m always open to discussing new opportunities and ideas.
+            </p>
+
+            <div className="space-y-6">
+              {/* Email */}
+              <div className="flex items-center gap-4">
+                <div className="p-3 solid-border">
+                  <Mail size={18} />
+                </div>
+                <div>
+                  <span className="section-label block mb-1">Email</span>
+                  <a 
+                    href={`mailto:${personalInfo.email}`}
+                    className="text-sm md:text-base hover:text-[#a3a3a3] transition-colors"
+                  >
+                    {personalInfo.email}
+                  </a>
+                </div>
+              </div>
+
+              {/* Socials */}
+              <div className="flex items-center gap-4">
+                <div className="p-3 solid-border">
+                  <span className="mono-text text-xs"> Socials</span>
+                </div>
+                <div className="flex flex-wrap gap-4">
+                  <Link
+                    href={socialLinks.github}
+                    target="_blank"
+                    className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#fafafa] transition-colors inline-flex items-center gap-1"
+                  >
+                    GitHub
+                    <ArrowUpRight size={10} />
+                  </Link>
+                  <Link
+                    href={socialLinks.twitter}
+                    target="_blank"
+                    className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#fafafa] transition-colors inline-flex items-center gap-1"
+                  >
+                    Twitter
+                    <ArrowUpRight size={10} />
+                  </Link>
+                  <Link
+                    href={socialLinks.linkedin}
+                    target="_blank"
+                    className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#fafafa] transition-colors inline-flex items-center gap-1"
+                  >
+                    LinkedIn
+                    <ArrowUpRight size={10} />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
