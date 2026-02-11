@@ -27,7 +27,7 @@ export const skills: string[] = [
   "MongoDB",
   "Tailwind CSS",
   "PostgresQL",
-  "Supabase",
+  "CI/CD",
   "Node.js",
   "Express.js",
   "Git",
