@@ -87,6 +87,11 @@ export const githubActivity: GithubActivity = {
   blockMargin: 3
 };
 
+export const leetcodeActivity: LeetcodeActivity = {
+  username: "justanuragmaurya",
+  profileUrl: "https://leetcode.com/u/justanuragmaurya",
+};
+
 const data = {
   personalInfo,
   socialLinks,
@@ -95,7 +100,8 @@ const data = {
   experience,
   contactForm,
   footerInfo,
-  githubActivity
+  githubActivity,
+  leetcodeActivity
 };
 export default data; 
 
@@ -152,4 +158,9 @@ export interface GithubActivity {
   username: string;
   profileUrl: string;
   blockMargin: number;
+}
+
+export interface LeetcodeActivity {
+  username: string;
+  profileUrl: string;
 }

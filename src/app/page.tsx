@@ -5,6 +5,7 @@ import Skills from "@/components/skillsection";
 import Education from "@/components/Education";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
+import LeetcodeStats from "@/components/LeetcodeStats";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <Experience />
       <Projects />
+      <LeetcodeStats />
       <Skills />
       <Education />
       <Contact />
