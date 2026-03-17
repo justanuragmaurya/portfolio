@@ -6,18 +6,23 @@ import Education from "@/components/Education";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
 import LeetcodeStats from "@/components/LeetcodeStats";
+import Certifications from "@/components/Certifications";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Hero />
-      <Experience />
-      <Projects />
-      <LeetcodeStats />
-      <Skills />
-      <Education />
-      <Contact />
-      <Footer />
-    </main>
+    <>
+      <Navbar />
+      <main className="min-h-screen">
+        <Hero />
+        {/* <Experience /> */}
+        <Projects />
+        <Certifications />
+        <Skills />
+        <Education />
+        <Contact />
+        <Footer />
+      </main>
+    </>
   );
 }

@@ -10,6 +10,8 @@
   --color-muted-foreground: #737373;
   --color-border: #262626;
   --color-accent: #404040;
+  --color-orange: #f97316;
+  --color-orange-muted: #f9731633;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
@@ -27,7 +29,7 @@ body {
 }
 
 ::selection {
-  background-color: #262626;
+  background-color: #f9731644;
   color: white;
 }
 
@@ -56,8 +58,8 @@ body {
 
 .grid-pattern {
   background-image: 
-    linear-gradient(rgba(64, 64, 64, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(64, 64, 64, 0.1) 1px, transparent 1px);
+    linear-gradient(rgba(249, 115, 22, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(249, 115, 22, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -66,7 +68,7 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #737373;
+  color: #f97316;
 }
 
 .btn-minimal {
@@ -81,7 +83,7 @@ body {
 
 .btn-minimal:hover {
   background-color: #171717;
-  border-color: #525252;
+  border-color: #f9731680;
 }
 
 .btn-minimal-solid {
@@ -96,8 +98,8 @@ body {
 }
 
 .btn-minimal-solid:hover {
-  background-color: #262626;
-  border-color: #404040;
+  background-color: #1c1108;
+  border-color: #f9731680;
 }
 
 .card-minimal {
@@ -107,13 +109,13 @@ body {
 
 .card-minimal:hover {
   border-style: solid;
-  border-color: #525252;
+  border-color: #f9731666;
   transition: all 0.2s ease;
 }
 
 .divider-dashed {
   width: 100%;
-  border-top: 1px dashed #333333;
+  border-top: 1px dashed #f9731633;
 }
 
 .tag-minimal {
@@ -159,5 +161,5 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #404040;
+  background: #f9731680;
 }

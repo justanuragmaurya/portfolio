@@ -21,7 +21,7 @@ export default function Footer() {
             <Link
               href={footerInfo.designerLink}
               target="_blank"
-              className="mono-text text-xs tracking-wider hover:text-[#a3a3a3] transition-colors"
+              className="mono-text text-xs tracking-wider hover:text-[#f97316] transition-colors"
             >
               {footerInfo.designerName}
             </Link>
@@ -32,7 +32,7 @@ export default function Footer() {
           {/* Right - Back to top */}
           <button
             onClick={scrollToTop}
-            className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#fafafa] transition-colors inline-flex items-center gap-1"
+            className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#f97316] transition-colors inline-flex items-center gap-1"
           >
             Back to Top
             <ArrowUp size={12} />

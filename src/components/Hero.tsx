@@ -32,23 +32,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="w-full">
-      {/* Top navigation bar */}
-      <div className="w-full solid-border border-t-0 border-x-0">
-        <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <span className="mono-text text-sm tracking-[0.15em] uppercase">
-            {personalInfo.name}
-          </span>
-          <div className="flex items-center gap-1">
-            <span className="w-2 h-2 bg-[#22c55e] animate-pulse-slow" />
-            <span className="mono-text text-[10px] tracking-wider uppercase text-[#737373] ml-2">
-              Available for work
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main hero content */}
+    <section id="home" className="w-full">
       <div className="max-w-5xl mx-auto px-6 py-12 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-start">
           {/* Left content */}
@@ -92,7 +76,7 @@ export default function Hero() {
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <button
                 onClick={copyEmail}
-                className="group flex items-center gap-2 mono-text text-xs tracking-wider text-[#737373] hover:text-[#fafafa] transition-colors"
+                className="group flex items-center gap-2 mono-text text-xs tracking-wider text-[#737373] hover:text-[#f97316] transition-colors"
               >
                 <Copy size={12} />
                 {copied ? "Copied!" : "Copy Email"}
@@ -101,7 +85,7 @@ export default function Hero() {
               <Link
                 href={socialLinks.github}
                 target="_blank"
-                className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#fafafa] transition-colors inline-flex items-center gap-1"
+                className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#f97316] transition-colors inline-flex items-center gap-1"
               >
                 GitHub
                 <ArrowUpRight size={10} />
@@ -110,7 +94,7 @@ export default function Hero() {
               <Link
                 href={socialLinks.twitter}
                 target="_blank"
-                className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#fafafa] transition-colors inline-flex items-center gap-1"
+                className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#f97316] transition-colors inline-flex items-center gap-1"
               >
                 Twitter
                 <ArrowUpRight size={10} />
@@ -119,7 +103,7 @@ export default function Hero() {
               <Link
                 href={socialLinks.linkedin}
                 target="_blank"
-                className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#fafafa] transition-colors inline-flex items-center gap-1"
+                className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#f97316] transition-colors inline-flex items-center gap-1"
               >
                 LinkedIn
                 <ArrowUpRight size={10} />
@@ -136,7 +120,7 @@ export default function Hero() {
                   width={280}
                   height={280}
                   alt={personalInfo.name}
-                  className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  className="object-cover transition-all duration-500"
                 />
               </div>
             </div>
