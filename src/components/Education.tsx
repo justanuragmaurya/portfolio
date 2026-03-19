@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Education() {
   return (
-    <section className="w-full py-12 md:py-20">
+    <section id="education" className="w-full py-12 md:py-20 scroll-mt-14">
       <div className="max-w-5xl mx-auto px-6">
         {/* Section header */}
         <div className="flex items-center gap-4 mb-12">

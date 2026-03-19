@@ -7,7 +7,7 @@ import { ArrowUpRight, Github } from "lucide-react";
 
 export default function Projects() {
   return (
-    <section className="w-full py-6 md:py-10">
+    <section id="projects" className="w-full py-6 md:py-10 scroll-mt-14">
       <div className="max-w-5xl mx-auto px-6">
         {/* Section header */}
         <div className="flex items-center gap-4 mb-8">
@@ -37,7 +37,7 @@ export default function Projects() {
                     width={200}
                     height={112}
                     alt={project.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 hover:scale-105"
+                    className="w-full h-full object-cover transition-all duration-500 hover:scale-105"
                   />
                 </Link>
 
@@ -56,7 +56,7 @@ export default function Projects() {
                       <Link
                         href={project.githubLink}
                         target="_blank"
-                        className="p-2 solid-border hover:bg-[#171717] transition-colors"
+                        className="p-2 solid-border hover:bg-[#171717] hover:text-[#f97316] hover:border-[#f9731666] transition-colors"
                         aria-label="View source code"
                       >
                         <Github size={14} />
@@ -64,7 +64,7 @@ export default function Projects() {
                       <Link
                         href={project.liveLink}
                         target="_blank"
-                        className="p-2 solid-border hover:bg-[#171717] transition-colors"
+                        className="p-2 solid-border hover:bg-[#171717] hover:text-[#f97316] hover:border-[#f9731666] transition-colors"
                         aria-label="View live site"
                       >
                         <ArrowUpRight size={14} />

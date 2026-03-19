@@ -5,7 +5,7 @@ import { socialLinks } from "@/lib/data";
 
 export default function Contact() {
   return (
-    <section className="w-full py-12 md:py-20">
+    <section id="contact" className="w-full py-12 md:py-20 scroll-mt-14">
       <div className="max-w-5xl mx-auto px-6">
         {/* Section header */}
         <div className="flex items-center gap-4 mb-12">
@@ -30,7 +30,7 @@ export default function Contact() {
                   <span className="section-label block mb-1">Email</span>
                   <a 
                     href={`mailto:${personalInfo.email}`}
-                    className="text-sm md:text-base hover:text-[#a3a3a3] transition-colors"
+                    className="text-sm md:text-base hover:text-[#f97316] transition-colors"
                   >
                     {personalInfo.email}
                   </a>
@@ -46,7 +46,7 @@ export default function Contact() {
                   <Link
                     href={socialLinks.github}
                     target="_blank"
-                    className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#fafafa] transition-colors inline-flex items-center gap-1"
+                    className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#f97316] transition-colors inline-flex items-center gap-1"
                   >
                     GitHub
                     <ArrowUpRight size={10} />
@@ -54,7 +54,7 @@ export default function Contact() {
                   <Link
                     href={socialLinks.twitter}
                     target="_blank"
-                    className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#fafafa] transition-colors inline-flex items-center gap-1"
+                    className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#f97316] transition-colors inline-flex items-center gap-1"
                   >
                     Twitter
                     <ArrowUpRight size={10} />
@@ -62,7 +62,7 @@ export default function Contact() {
                   <Link
                     href={socialLinks.linkedin}
                     target="_blank"
-                    className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#fafafa] transition-colors inline-flex items-center gap-1"
+                    className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#f97316] transition-colors inline-flex items-center gap-1"
                   >
                     LinkedIn
                     <ArrowUpRight size={10} />

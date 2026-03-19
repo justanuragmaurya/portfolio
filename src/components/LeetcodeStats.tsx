@@ -127,7 +127,7 @@ export default function LeetcodeStats() {
     : [];
 
   return (
-    <section className="w-full py-6 md:py-10">
+    <section id="leetcode" className="w-full py-6 md:py-10 scroll-mt-14">
       <div className="max-w-5xl mx-auto px-6">
         <div className="flex items-center gap-4 mb-8">
           <span className="section-label">LeetCode</span>
