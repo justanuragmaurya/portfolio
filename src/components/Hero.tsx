@@ -39,7 +39,7 @@ export default function Hero() {
           <div className="space-y-8">
             {/* Greeting box */}
             <div className="card-minimal">
-              <p className="section-label mb-4">Anurag Maurya</p>
+              <p className="section-label mb-4"> Anurag Maurya </p>
               <h1 className="text-3xl md:text-4xl font-light leading-tight tracking-tight">
                 {personalInfo.greeting}
                 <br />
