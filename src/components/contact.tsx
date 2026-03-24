@@ -7,7 +7,6 @@ export default function Contact() {
   return (
     <section id="contact" className="w-full py-12 md:py-20 scroll-mt-14">
       <div className="max-w-5xl mx-auto px-6">
-        {/* Section header */}
         <div className="flex items-center gap-4 mb-12">
           <span className="section-label">Get in Touch</span>
           <div className="flex-1 divider-dashed" />
@@ -15,13 +14,12 @@ export default function Contact() {
 
         <div className="dashed-border p-8 md:p-12">
           <div className="max-w-2xl">
-            <p className="text-[#a3a3a3] leading-relaxed text-sm md:text-base mb-8">
+            <p className="text-[var(--fg-secondary)] leading-relaxed text-sm md:text-base mb-8">
               Have a project in mind or want to collaborate? Feel free to reach out.
               I&apos;m always open to discussing new opportunities and ideas.
             </p>
 
             <div className="space-y-6">
-              {/* Email */}
               <div className="flex items-center gap-4">
                 <div className="p-3 solid-border">
                   <Mail size={18} />
@@ -30,14 +28,13 @@ export default function Contact() {
                   <span className="section-label block mb-1">Email</span>
                   <a 
                     href={`mailto:${personalInfo.email}`}
-                    className="text-sm md:text-base hover:text-[#f97316] transition-colors"
+                    className="text-sm md:text-base hover:text-[var(--accent)] transition-colors"
                   >
                     {personalInfo.email}
                   </a>
                 </div>
               </div>
 
-              {/* Socials */}
               <div className="flex items-center gap-4">
                 <div className="p-3 solid-border">
                   <span className="mono-text text-xs"> Socials</span>
@@ -46,7 +43,7 @@ export default function Contact() {
                   <Link
                     href={socialLinks.github}
                     target="_blank"
-                    className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#f97316] transition-colors inline-flex items-center gap-1"
+                    className="mono-text text-xs tracking-wider text-[var(--fg-muted)] hover:text-[var(--accent)] transition-colors inline-flex items-center gap-1"
                   >
                     GitHub
                     <ArrowUpRight size={10} />
@@ -54,7 +51,7 @@ export default function Contact() {
                   <Link
                     href={socialLinks.twitter}
                     target="_blank"
-                    className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#f97316] transition-colors inline-flex items-center gap-1"
+                    className="mono-text text-xs tracking-wider text-[var(--fg-muted)] hover:text-[var(--accent)] transition-colors inline-flex items-center gap-1"
                   >
                     Twitter
                     <ArrowUpRight size={10} />
@@ -62,7 +59,7 @@ export default function Contact() {
                   <Link
                     href={socialLinks.linkedin}
                     target="_blank"
-                    className="mono-text text-xs tracking-wider text-[#737373] hover:text-[#f97316] transition-colors inline-flex items-center gap-1"
+                    className="mono-text text-xs tracking-wider text-[var(--fg-muted)] hover:text-[var(--accent)] transition-colors inline-flex items-center gap-1"
                   >
                     LinkedIn
                     <ArrowUpRight size={10} />

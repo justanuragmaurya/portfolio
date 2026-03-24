@@ -36,7 +36,7 @@ export default function Certifications() {
         <div className="flex items-center gap-4 mb-12">
           <span className="section-label">Certifications</span>
           <div className="flex-1 divider-dashed" />
-          <span className="mono-text text-xs text-[#525252]">
+          <span className="mono-text text-xs text-[var(--fg-dim)]">
             [{String(certifications.length).padStart(2, "0")} Certificates]
           </span>
         </div>
@@ -47,17 +47,17 @@ export default function Certifications() {
               key={index}
               href={cert.link}
               target="_blank"
-              className={`solid-border ${index === 0 ? "" : "border-t-0"} p-6 flex items-center justify-between gap-4 hover:bg-[#0f0f0f] transition-colors group`}
+              className={`solid-border ${index === 0 ? "" : "border-t-0"} p-6 flex items-center justify-between gap-4 hover:bg-[var(--bg-hover)] transition-colors group`}
             >
               <div className="min-w-0">
-                <h3 className="text-base font-normal tracking-tight group-hover:text-[#fafafa] transition-colors">
+                <h3 className="text-base font-normal tracking-tight group-hover:text-[var(--fg)] transition-colors">
                   {cert.title}
                 </h3>
-                <p className="mono-text text-xs text-[#737373] mt-1">
+                <p className="mono-text text-xs text-[var(--fg-muted)] mt-1">
                   {cert.issuer}
                 </p>
               </div>
-              <div className="shrink-0 p-2 solid-border text-[#525252] group-hover:text-[#f97316] group-hover:border-[#f9731666] transition-colors">
+              <div className="shrink-0 p-2 solid-border text-[var(--fg-dim)] group-hover:text-[var(--accent)] group-hover:border-[var(--accent-border-soft)] transition-colors">
                 <ArrowUpRight size={14} />
               </div>
             </Link>

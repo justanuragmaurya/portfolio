@@ -5,6 +5,7 @@ import { Activity, ActivityCalendar } from "react-activity-calendar";
 import { leetcodeActivity } from "@/lib/data";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { useTheme } from "next-themes";
 
 interface LeetcodeProfile {
   totalSolved: number;
@@ -82,11 +83,11 @@ function StatBar({
         <span className="mono-text text-xs" style={{ color }}>
           {label}
         </span>
-        <span className="mono-text text-xs text-[#737373]">
+        <span className="mono-text text-xs text-[var(--fg-muted)]">
           {solved}/{total}
         </span>
       </div>
-      <div className="w-full h-1.5 bg-[#171717] rounded-full overflow-hidden">
+      <div className="w-full h-1.5 bg-[var(--bg-secondary)] rounded-full overflow-hidden">
         <div
           className="h-full rounded-full transition-all duration-700"
           style={{ width: `${pct}%`, backgroundColor: color }}
@@ -100,6 +101,7 @@ export default function LeetcodeStats() {
   const [profile, setProfile] = useState<LeetcodeProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { theme } = useTheme();
 
   const fetchProfile = useCallback(async () => {
     try {
@@ -135,7 +137,7 @@ export default function LeetcodeStats() {
           <Link
             href={leetcodeActivity.profileUrl}
             target="_blank"
-            className="flex items-center gap-1 mono-text text-xs text-[#525252] hover:text-[#a3a3a3] transition-colors"
+            className="flex items-center gap-1 mono-text text-xs text-[var(--fg-dim)] hover:text-[var(--fg-secondary)] transition-colors"
           >
             @{leetcodeActivity.username}
             <ArrowUpRight size={12} />
@@ -144,7 +146,7 @@ export default function LeetcodeStats() {
 
         {error ? (
           <div className="solid-border p-6 text-center">
-            <p className="mono-text text-xs text-[#525252]">
+            <p className="mono-text text-xs text-[var(--fg-dim)]">
               Could not load LeetCode stats
             </p>
           </div>
@@ -154,12 +156,12 @@ export default function LeetcodeStats() {
               <div className="solid-border p-4 text-center">
                 <div className="text-2xl font-light tracking-tight">
                   {loading ? (
-                    <span className="inline-block w-8 h-7 bg-[#171717] animate-pulse rounded" />
+                    <span className="inline-block w-8 h-7 bg-[var(--bg-secondary)] animate-pulse rounded" />
                   ) : (
                     profile?.totalSolved
                   )}
                 </div>
-                <div className="mono-text text-[10px] text-[#525252] mt-1 uppercase tracking-wider">
+                <div className="mono-text text-[10px] text-[var(--fg-dim)] mt-1 uppercase tracking-wider">
                   Solved
                 </div>
               </div>
@@ -167,12 +169,12 @@ export default function LeetcodeStats() {
                 <div key={key} className="solid-border p-4 text-center">
                   <div className="text-2xl font-light tracking-tight" style={{ color }}>
                     {loading ? (
-                      <span className="inline-block w-8 h-7 bg-[#171717] animate-pulse rounded" />
+                      <span className="inline-block w-8 h-7 bg-[var(--bg-secondary)] animate-pulse rounded" />
                     ) : (
                       profile?.[`${key}Solved` as keyof LeetcodeProfile] as number
                     )}
                   </div>
-                  <div className="mono-text text-[10px] text-[#525252] mt-1 uppercase tracking-wider">
+                  <div className="mono-text text-[10px] text-[var(--fg-dim)] mt-1 uppercase tracking-wider">
                     {label}
                   </div>
                 </div>
@@ -185,10 +187,10 @@ export default function LeetcodeStats() {
                   {[1, 2, 3].map((i) => (
                     <div key={i} className="space-y-1.5">
                       <div className="flex justify-between">
-                        <span className="inline-block w-12 h-3 bg-[#171717] animate-pulse rounded" />
-                        <span className="inline-block w-10 h-3 bg-[#171717] animate-pulse rounded" />
+                        <span className="inline-block w-12 h-3 bg-[var(--bg-secondary)] animate-pulse rounded" />
+                        <span className="inline-block w-10 h-3 bg-[var(--bg-secondary)] animate-pulse rounded" />
                       </div>
-                      <div className="w-full h-1.5 bg-[#171717] rounded-full" />
+                      <div className="w-full h-1.5 bg-[var(--bg-secondary)] rounded-full" />
                     </div>
                   ))}
                 </div>
@@ -208,27 +210,27 @@ export default function LeetcodeStats() {
 
             <div className="solid-border p-4 overflow-x-auto">
               <div className="flex items-center justify-between mb-4">
-                <span className="mono-text text-xs text-[#525252]">
+                <span className="mono-text text-xs text-[var(--fg-dim)]">
                   Submission Activity
                 </span>
                 {!loading && profile && (
-                  <span className="mono-text text-xs text-[#525252]">
+                  <span className="mono-text text-xs text-[var(--fg-dim)]">
                     Rank #{profile.ranking.toLocaleString()}
                   </span>
                 )}
               </div>
               {loading ? (
-                <div className="h-[120px] bg-[#171717] animate-pulse rounded" />
+                <div className="h-[120px] bg-[var(--bg-secondary)] animate-pulse rounded" />
               ) : (
                 <ActivityCalendar
                   data={calendarData}
                   maxLevel={4}
                   blockMargin={3}
                   theme={{
-                    light: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
+                    light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
                     dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
                   }}
-                  colorScheme="dark"
+                  colorScheme={theme === "dark" ? "dark" : "light"}
                   labels={{
                     totalCount: "{{count}} submissions in the last year",
                   }}

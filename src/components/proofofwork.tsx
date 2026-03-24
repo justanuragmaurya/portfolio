@@ -9,24 +9,21 @@ export default function Projects() {
   return (
     <section id="projects" className="w-full py-6 md:py-10 scroll-mt-14">
       <div className="max-w-5xl mx-auto px-6">
-        {/* Section header */}
         <div className="flex items-center gap-4 mb-8">
           <span className="section-label">My Works</span>
           <div className="flex-1 divider-dashed" />
-          <span className="mono-text text-xs text-[#525252]">
+          <span className="mono-text text-xs text-[var(--fg-dim)]">
             [{String(projectsData.length).padStart(2, '0')}]
           </span>
         </div>
 
-        {/* Projects list - compact */}
         <div className="space-y-4">
           {projectsData.map((project, index) => (
             <article
               key={index}
-              className="solid-border p-4 hover:bg-[#0f0f0f] transition-colors group"
+              className="solid-border p-4 hover:bg-[var(--bg-hover)] transition-colors group"
             >
               <div className="flex flex-col md:flex-row md:items-center gap-4">
-                {/* Project image - smaller with link */}
                 <Link
                   href={project.liveLink}
                   target="_blank"
@@ -41,14 +38,13 @@ export default function Projects() {
                   />
                 </Link>
 
-                {/* Project info */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <h3 className="text-base font-normal tracking-tight">
                         {project.title}
                       </h3>
-                      <p className="mono-text text-[10px] text-[#737373] mt-1 line-clamp-1">
+                      <p className="mono-text text-[10px] text-[var(--fg-muted)] mt-1 line-clamp-1">
                         {project.description}
                       </p>
                     </div>
@@ -56,7 +52,7 @@ export default function Projects() {
                       <Link
                         href={project.githubLink}
                         target="_blank"
-                        className="p-2 solid-border hover:bg-[#171717] hover:text-[#f97316] hover:border-[#f9731666] transition-colors"
+                        className="p-2 solid-border hover:bg-[var(--bg-secondary)] hover:text-[var(--accent)] hover:border-[var(--accent-border-soft)] transition-colors"
                         aria-label="View source code"
                       >
                         <Github size={14} />
@@ -64,7 +60,7 @@ export default function Projects() {
                       <Link
                         href={project.liveLink}
                         target="_blank"
-                        className="p-2 solid-border hover:bg-[#171717] hover:text-[#f97316] hover:border-[#f9731666] transition-colors"
+                        className="p-2 solid-border hover:bg-[var(--bg-secondary)] hover:text-[var(--accent)] hover:border-[var(--accent-border-soft)] transition-colors"
                         aria-label="View live site"
                       >
                         <ArrowUpRight size={14} />
@@ -72,7 +68,6 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  {/* Tech tags - compact */}
                   <div className="flex flex-wrap gap-2 mt-3">
                     {project.techUsed.slice(0, 4).map((tech, techIndex) => (
                       <span key={techIndex} className="tag-minimal">
