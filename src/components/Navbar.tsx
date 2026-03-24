@@ -5,7 +5,7 @@ import { useState, useEffect, useCallback } from "react";
 
 const NAV_ITEMS = [
   { label: "Home", href: "#home" },
-  // { label: "Experience", href: "#experience" },
+  { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Certifications", href: "#certifications" },
   { label: "Achievements", href: "#achievements" },

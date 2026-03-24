@@ -16,7 +16,7 @@ export default function Home() {
       <Navbar />
       <main className="min-h-screen">
         <Hero />
-        {/* <Experience /> */}
+        <Experience />
         <Projects />
         <Certifications />
         <Achievements />
