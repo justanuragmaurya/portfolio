@@ -12,7 +12,7 @@ export const Projects:Projects[] = [
         description: "A RAG-powered spiritual AI assistant that answers life questions on career, relationships, fear, and purpose using wisdom from the Bhagavad Gita. Ask in any language — Krishna responds in yours.",
         image: "/geta-ai.png",
         techUsed: ["NextJS", "FastAPI", "GPT-4o-mini", "Qdrant", "PostgreSQL", "TurboRepo", "Python"],
-        liveLink: "https://geta-ai.vercel.app",
+        liveLink: "https://geta-ai.anuragmaurya.com",
         githubLink: "https://github.com/justanuragmaurya/geta-ai-rag-app"
     },
     {
