@@ -8,6 +8,14 @@ export const Projects:Projects[] = [
         githubLink:"https://github.com/justanuragmaurya/thumbnaily-ai"
     },
     {
+        title: "Geta AI",
+        description: "A RAG-powered spiritual AI assistant that answers life questions on career, relationships, fear, and purpose using wisdom from the Bhagavad Gita. Ask in any language — Krishna responds in yours.",
+        image: "/geta-ai.png",
+        techUsed: ["NextJS", "FastAPI", "GPT-4o-mini", "Qdrant", "PostgreSQL", "TurboRepo", "Python"],
+        liveLink: "https://geta-ai.vercel.app",
+        githubLink: "https://github.com/justanuragmaurya/geta-ai-rag-app"
+    },
+    {
         title:"Fit Check",
         description:"A virtual try-on platform that uses AI to let users upload reference images and prompts, generating realistic previews of outfits.",
         image:'/fitcheck.png',
