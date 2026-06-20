@@ -1,25 +1,32 @@
 import type { Metadata } from "next";
-import { Inter, Space_Mono } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
-import { ThemeProvider } from "@/components/theme-provider";
+import CustomCursor from "@/components/CustomCursor";
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap',
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-display",
+  display: "swap",
 });
 
-const spaceMono = Space_Mono({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-mono',
-  display: 'swap',
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Anurag Maurya — Fullstack Developer",
-  description: "MVP builder and full-stack developer, turning ideas into production-ready products.",
+  title: "Anurag Maurya — Full-Stack Developer",
+  description:
+    "I build things that ship. Full-stack developer & MVP builder. From idea to production in weeks, not quarters.",
 };
 
 export default function RootLayout({
@@ -28,19 +35,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${spaceMono.variable} font-sans antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="min-h-screen grid-pattern">
-            {children}
-            <Analytics />
-          </div>
-        </ThemeProvider>
+    <html lang="en">
+      <body
+        className={`${cormorant.variable} ${dmSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <CustomCursor />
+        {children}
+        <Analytics />
       </body>
     </html>
   );

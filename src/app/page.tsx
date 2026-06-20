@@ -2,26 +2,25 @@ import Hero from "@/components/Hero";
 import Projects from "@/components/proofofwork";
 import Experience from "@/components/Experience";
 import Skills from "@/components/skillsection";
+import Achievements from "@/components/Achievements";
 import Education from "@/components/Education";
+import Certifications from "@/components/Certifications";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
-import LeetcodeStats from "@/components/LeetcodeStats";
-import Certifications from "@/components/Certifications";
-import Achievements from "@/components/Achievements";
 import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen">
+      <main>
         <Hero />
-        <Experience />
         <Projects />
-        <Certifications />
-        <Achievements />
+        <Experience />
         <Skills />
+        <Achievements />
         <Education />
+        <Certifications />
         <Contact />
         <Footer />
       </main>

@@ -1,33 +1,23 @@
 "use client";
 
-import { personalInfo } from "@/lib/data";
 import { useState, useEffect, useCallback } from "react";
-import { Sun, Moon } from "lucide-react";
-import { useTheme } from "next-themes";
 
 const NAV_ITEMS = [
-  { label: "Home", href: "#home" },
+  { label: "Work", href: "#projects" },
   { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Certifications", href: "#certifications" },
-  { label: "Achievements", href: "#achievements" },
-  { label: "Skills", href: "#skills" },
-  { label: "Education", href: "#education" },
+  { label: "Stack", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
-
-  useEffect(() => setMounted(true), []);
 
   const handleScroll = useCallback(() => {
-    const sections = NAV_ITEMS.map((item) => item.href.slice(1));
-    const scrollY = window.scrollY + 80;
-
+    setScrolled(window.scrollY > 40);
+    const sections = ["home", "projects", "experience", "skills", "achievements", "education", "certifications", "contact"];
+    const scrollY = window.scrollY + 100;
     for (let i = sections.length - 1; i >= 0; i--) {
       const el = document.getElementById(sections[i]);
       if (el && el.offsetTop <= scrollY) {
@@ -51,96 +41,92 @@ export default function Navbar() {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
-    const el = document.getElementById(id);
-    el?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-[var(--bg-overlay-80)] backdrop-blur-md solid-border border-t-0 border-x-0">
-      <div className="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+      style={{
+        backgroundColor: scrolled ? "rgba(13, 13, 13, 0.92)" : "transparent",
+        backdropFilter: scrolled ? "blur(16px)" : "none",
+        borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
+      }}
+    >
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo */}
         <button
           onClick={() => scrollTo("#home")}
-          className="mono-text text-sm tracking-[0.15em] uppercase hover:text-[var(--accent)] transition-colors"
+          className="font-mono text-xs tracking-[0.2em] uppercase text-[var(--text)] hover:text-[var(--accent)] transition-colors duration-300"
         >
-          {personalInfo.name}
+          Anurag Maurya
         </button>
 
-        <div className="hidden md:flex items-center gap-1">
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-8">
           {NAV_ITEMS.map((item) => (
             <button
               key={item.href}
               onClick={() => scrollTo(item.href)}
-              className={`mono-text text-[11px] tracking-wider uppercase px-3 py-1.5 transition-colors ${
-                activeSection === item.href.slice(1)
-                  ? "text-[var(--accent)] bg-[var(--accent-bg)]"
-                  : "text-[var(--fg-muted)] hover:text-[var(--accent)]"
-              }`}
+              className="font-mono text-[11px] tracking-[0.15em] uppercase transition-colors duration-300"
+              style={{
+                color:
+                  activeSection === item.href.slice(1)
+                    ? "var(--accent)"
+                    : "var(--text-muted)",
+              }}
             >
               {item.label}
             </button>
           ))}
 
-          {mounted && (
-            <button
-              onClick={toggleTheme}
-              className="p-1.5 solid-border text-[var(--fg-muted)] hover:text-[var(--accent)] hover:border-[var(--accent-border-soft)] transition-colors ml-2"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
-            </button>
-          )}
-
-          <div className="flex items-center gap-1 ml-3">
-            <span className="w-2 h-2 bg-[var(--green)] animate-pulse-slow" />
-            <span className="mono-text text-[10px] tracking-wider uppercase text-[var(--fg-muted)] ml-1">
+          <div className="flex items-center gap-2 ml-4 pl-4 border-l border-[var(--border)]">
+            <span
+              className="w-1.5 h-1.5 rounded-full pulse-dot"
+              style={{
+                backgroundColor: "var(--green)",
+                boxShadow: "0 0 6px var(--green)",
+              }}
+            />
+            <span className="font-mono text-[10px] tracking-[0.15em] uppercase text-[var(--text-muted)]">
               Available
             </span>
           </div>
         </div>
 
-        <div className="flex items-center gap-2 md:hidden">
-          {mounted && (
-            <button
-              onClick={toggleTheme}
-              className="mono-text text-xs tracking-wider uppercase text-[var(--fg-muted)] hover:text-[var(--fg)] transition-colors p-2 solid-border"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
-            </button>
-          )}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="mono-text text-xs tracking-wider uppercase text-[var(--fg-muted)] hover:text-[var(--fg)] transition-colors p-2 solid-border"
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? "Close" : "Menu"}
-          </button>
-        </div>
+        {/* Mobile menu toggle */}
+        <button
+          className="md:hidden font-mono text-[11px] tracking-[0.15em] uppercase text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? "Close" : "Menu"}
+        </button>
       </div>
 
+      {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden solid-border border-t-0 border-x-0 bg-[var(--bg-overlay-95)] backdrop-blur-md">
-          <div className="max-w-5xl mx-auto px-6 py-4 flex flex-col gap-1">
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => scrollTo(item.href)}
-                className={`mono-text text-xs tracking-wider uppercase px-3 py-2 text-left transition-colors ${
+        <div
+          className="md:hidden border-t border-[var(--border)] px-6 py-6 flex flex-col gap-4"
+          style={{ backgroundColor: "rgba(13, 13, 13, 0.98)", backdropFilter: "blur(20px)" }}
+        >
+          {NAV_ITEMS.map((item) => (
+            <button
+              key={item.href}
+              onClick={() => scrollTo(item.href)}
+              className="font-mono text-sm tracking-[0.15em] uppercase text-left transition-colors duration-200 hover:text-[var(--accent)]"
+              style={{
+                color:
                   activeSection === item.href.slice(1)
-                    ? "text-[var(--accent)] bg-[var(--accent-bg)]"
-                    : "text-[var(--fg-muted)] hover:text-[var(--accent)]"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
+                    ? "var(--accent)"
+                    : "var(--text-secondary)",
+              }}
+            >
+              {item.label}
+            </button>
+          ))}
         </div>
       )}
+
     </nav>
   );
 }

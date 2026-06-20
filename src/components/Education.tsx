@@ -1,48 +1,103 @@
+"use client";
+
 import { education } from "@/lib/data";
 import Image from "next/image";
+import { motion, useInView } from "motion/react";
+import { useRef } from "react";
+
+function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 32 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.65, delay, ease: [0.16, 1, 0.3, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function Education() {
   return (
-    <section id="education" className="w-full py-12 md:py-20 scroll-mt-14">
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="flex items-center gap-4 mb-12">
-          <span className="section-label">Education</span>
-          <div className="flex-1 divider-dashed" />
-          <span className="mono-text text-xs text-[var(--fg-dim)]">
-            [{String(education.length).padStart(2, '0')} Institutions]
-          </span>
-        </div>
-
-        <div className="space-y-6">
-          {education.map((edu, index) => (
-            <div
-              key={index}
-              className="solid-border p-6 flex items-start gap-6 hover:bg-[var(--bg-hover)] transition-colors"
+    <section id="education" className="w-full py-24 md:py-32 scroll-mt-20">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Section header */}
+        <FadeUp>
+          <div className="flex items-center gap-4 mb-16">
+            <span
+              className="font-mono text-[10px] tracking-[0.2em]"
+              style={{ color: "var(--accent)" }}
             >
-              <div className="dashed-border-thin p-2 shrink-0">
-                <Image
-                  src={edu.logo}
-                  width={48}
-                  height={48}
-                  alt={edu.institution}
-                  className="object-contain"
-                />
-              </div>
+              05
+            </span>
+            <div className="h-px flex-1" style={{ backgroundColor: "var(--border)" }} />
+            <span
+              className="font-mono text-[10px] tracking-[0.2em] uppercase"
+              style={{ color: "var(--text-muted)" }}
+            >
+              Background
+            </span>
+          </div>
+        </FadeUp>
 
-              <div className="flex-1 min-w-0">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                  <h3 className="text-base font-normal tracking-tight">
-                    {edu.institution}
-                  </h3>
-                  <span className="mono-text text-xs text-[var(--fg-muted)]">
-                    {edu.duration}
-                  </span>
+        <div className="space-y-px" style={{ backgroundColor: "var(--border)" }}>
+          {education.map((edu, index) => (
+            <FadeUp key={index} delay={index * 0.08}>
+              <div
+                className="flex items-start gap-6 p-6 md:p-8 transition-colors duration-200"
+                style={{ backgroundColor: "var(--bg-card)" }}
+                onMouseEnter={(e) =>
+                  ((e.currentTarget as HTMLElement).style.backgroundColor = "var(--bg-hover)")
+                }
+                onMouseLeave={(e) =>
+                  ((e.currentTarget as HTMLElement).style.backgroundColor = "var(--bg-card)")
+                }
+              >
+                <div
+                  className="shrink-0 w-12 h-12 flex items-center justify-center"
+                  style={{ border: "1px solid var(--border-strong)" }}
+                >
+                  <Image
+                    src={edu.logo}
+                    width={32}
+                    height={32}
+                    alt={edu.institution}
+                    className="object-contain"
+                  />
                 </div>
-                <p className="mono-text text-sm text-[var(--fg-secondary)] mt-1">
-                  {edu.degree}
-                </p>
+
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+                    <h3
+                      className="text-xl md:text-2xl leading-tight"
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontWeight: 400,
+                        color: "var(--text)",
+                        letterSpacing: "-0.01em",
+                      }}
+                    >
+                      {edu.institution}
+                    </h3>
+                    <span
+                      className="font-mono text-[10px] tracking-[0.12em] uppercase shrink-0"
+                      style={{ color: "var(--text-muted)" }}
+                    >
+                      {edu.duration}
+                    </span>
+                  </div>
+                  <p
+                    className="font-mono text-xs tracking-[0.06em] mt-2"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {edu.degree}
+                  </p>
+                </div>
               </div>
-            </div>
+            </FadeUp>
           ))}
         </div>
       </div>
